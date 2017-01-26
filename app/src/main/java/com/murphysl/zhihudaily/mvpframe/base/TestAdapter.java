@@ -2,6 +2,7 @@ package com.murphysl.zhihudaily.mvpframe.base;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import java.util.List;
 
 
 public class TestAdapter extends RecyclerView.Adapter<TestAdapter.MyHolder> {
+    private static final String TAG = "TestAdapter";
 
     private Context context;
     private List<LatestNewsBean.StoriesBean> list = new ArrayList<>();
@@ -33,14 +35,15 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.MyHolder> {
 
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.support_simple_spinner_dropdown_item , parent , false);
+        View view = LayoutInflater.from(context).inflate(R.layout.main_content_item , parent , false);
         MyHolder holder = new MyHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
-        holder.textView.setText(list.get(position).getTitle());
+        if(list.get(position).getTitle() != null)
+            holder.textView.setText(list.get(position).getTitle());
     }
 
     @Override

@@ -65,7 +65,7 @@ public class MainFragment extends BaseFragment<MainModel , MainPresenter> implem
 
     @Override
     public void showLatestNews(LatestNewsBean latestNewsBean) {
-        if(latestNewsBean == null)
+        if(latestNewsBean != null)
             Log.i(TAG, "showLatestNews: ");
         Log.i(TAG, "showLatestNews: " + latestNewsBean.toString());
 
