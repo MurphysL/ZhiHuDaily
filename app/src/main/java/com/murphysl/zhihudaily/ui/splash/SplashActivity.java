@@ -2,8 +2,10 @@ package com.murphysl.zhihudaily.ui.splash;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
+import android.widget.FrameLayout;
 
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.mvpframe.base.BaseActivity;
@@ -22,14 +24,14 @@ import butterknife.ButterKnife;
 public class SplashActivity extends BaseActivity {
 
 
-//    @BindView(R.id.frag_splash)
-//    Fragment fragSplash;
+    @BindView(R.id.content)
+    FrameLayout splashContent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_act);
+        setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
 
     }
@@ -37,12 +39,10 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void initFragment() {
         super.initFragment();
-//        SplashFragment splashFragment =
-//                (SplashFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
-//        if(fragSplash == null )
-//        {
-//            mContentFragment = new ContentFragment();
-//            fm.beginTransaction().add(R.id.id_fragment_container,mContentFragment).commit();
-//        }
+        SplashFragment splashFragment = new SplashFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.content, splashFragment);
+        fragmentTransaction.commit();
     }
 }

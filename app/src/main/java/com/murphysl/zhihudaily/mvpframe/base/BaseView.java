@@ -10,4 +10,6 @@ package com.murphysl.zhihudaily.mvpframe.base;
 
 public interface BaseView {
 
+    void onRequestError(String msg);
+    void onRequestEnd();
 }

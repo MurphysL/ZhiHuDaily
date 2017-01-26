@@ -2,7 +2,11 @@ package com.murphysl.zhihudaily.ui.splash;
 
 import com.murphysl.zhihudaily.bean.SplashImgBean;
 
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
+
 
 /**
  * SplashPresenter
@@ -16,11 +20,26 @@ public class SplashPresenter extends SplashContract.Presenter {
 
     @Override
     void getSplashImg() {
-        model.getSplashImg().subscribe(new Consumer<SplashImgBean>() {
-            @Override
-            public void accept(SplashImgBean splashImgBean) throws Exception {
-                view.showImg(splashImgBean.getImg());
-            }
-        });
+
+        rx.add( model.getSplashImg().subscribe(
+                new Consumer<SplashImgBean>() {
+                    @Override
+                    public void accept(SplashImgBean imgBean) throws Exception {
+                        view.showImg(imgBean);
+                    }
+                },
+                new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        view.onRequestError(throwable.toString());
+                    }
+                } ,
+                new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        view.onRequestEnd();
+                    }
+                }));
+
     }
 }

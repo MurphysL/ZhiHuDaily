@@ -1,5 +1,6 @@
 package com.murphysl.zhihudaily.mvpframe.rx;
 
+import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -17,7 +18,7 @@ public class RxSchedulerHelper {
     public static <T> ObservableTransformer<T , T> io_main(){
         return new ObservableTransformer<T, T>() {
             @Override
-            public ObservableSource<T> apply(io.reactivex.Observable<T> upstream) {
+            public ObservableSource<T> apply(Observable<T> upstream) {
                 return upstream
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread());

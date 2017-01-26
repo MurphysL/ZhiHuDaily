@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ZhiHuDaily</string>
+
+    <string name="toolbar_title_main">"首页"</string>
 </resources>

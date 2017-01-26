@@ -1,6 +1,7 @@
 package com.murphysl.zhihudaily.api;
 
-import com.murphysl.zhihudaily.BuildConfig;
+
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.murphysl.zhihudaily.Constants;
 
 import java.util.concurrent.TimeUnit;
@@ -8,8 +9,6 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
  * Network
@@ -49,6 +48,7 @@ public class Network {
                 .baseUrl(Constants.baseUrl)
                 .client(configClient())
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         return retrofit.create(service);
     }

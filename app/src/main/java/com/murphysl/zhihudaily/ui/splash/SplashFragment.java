@@ -1,31 +1,42 @@
 package com.murphysl.zhihudaily.ui.splash;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.murphysl.zhihudaily.mvpframe.base.BaseFragment;
+import com.murphysl.zhihudaily.ui.main.MainActivity;
 import com.murphysl.zhihudaily.R;
+import com.murphysl.zhihudaily.bean.SplashImgBean;
+import com.murphysl.zhihudaily.mvpframe.base.BaseFragment;
+import com.murphysl.zhihudaily.mvpframe.rx.RxSchedulerHelper;
 import com.squareup.picasso.Picasso;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 /**
  * SplashFragment
+ *
+ * logo动画
+ * picasso缓存
  *
  * @author: MurphySL
  * @time: 2017/1/19 12:46
  */
 
 
-public abstract class SplashFragment extends BaseFragment<SplashModel , SplashPresenter> implements SplashContract.View {
+public class SplashFragment extends BaseFragment<SplashModel, SplashPresenter> implements SplashContract.View {
+    private static final String TAG = "SplashFragment";
 
-    @BindView(R.id.contentFrame)
-    ImageView contentFrame;
+    private ImageView contentFrame;
 
     public SplashFragment() {
     }
@@ -34,7 +45,7 @@ public abstract class SplashFragment extends BaseFragment<SplashModel , SplashPr
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.splash_frag, container, false);
-        ButterKnife.bind(this, root);
+        contentFrame = (ImageView) root.findViewById(R.id.contentFrame);
         return root;
     }
 
@@ -45,10 +56,41 @@ public abstract class SplashFragment extends BaseFragment<SplashModel , SplashPr
     }
 
     @Override
-    public void showImg(String img) {
+    public void showImg(SplashImgBean imgBean) {
+        Log.i(TAG, "showImg: " + imgBean.toString());
         Picasso.with(getContext())
-                .load(img)
-                .centerCrop()
+                .invalidate(imgBean.getImg());
+        Picasso.with(getContext())
+                .load(imgBean.getImg())
+                .fit()
                 .into(contentFrame);
+    }
+
+    @Override
+    public void onRequestEnd() {
+        super.onRequestEnd();
+        Observable.timer(2 , TimeUnit.SECONDS)
+                .compose(RxSchedulerHelper.<Long>io_main())
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Long value) {
+                        startActivity(new Intent(getActivity() , MainActivity.class));
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }

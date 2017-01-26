@@ -17,6 +17,7 @@ import io.reactivex.Observable;
 public class SplashModel implements SplashContract.Model {
     @Override
     public Observable<SplashImgBean> getSplashImg() {
-        return Network.getInstance().getCommonApi().getSplashImg().compose(RxSchedulerHelper.<SplashImgBean>io_main());
+        return Network.getInstance().getCommonApi().getSplashImg()
+                .compose(RxSchedulerHelper.<SplashImgBean>io_main());
     }
 }

@@ -1,5 +1,7 @@
 package com.murphysl.zhihudaily.mvpframe.base;
 
+import com.murphysl.zhihudaily.mvpframe.rx.RxManager;
+
 /**
  * BasePresenter
  *
@@ -12,13 +14,15 @@ public abstract class BasePresenter<M , V> {
 
     public M model;
     public V view;
+    public RxManager rx = new RxManager();
 
-    public void attachVM(V view , M model){
+    public void attachMV(M model, V view){
         this.model = model;
         this.view = view;
     }
 
-    public void detachVM(){
+    public void detachMV(){
+        rx.clear();
         model = null;
         view = null;
     }

@@ -18,7 +18,7 @@ import io.reactivex.Observable;
 public interface SplashContract {
 
     interface View extends BaseView{
-        void showImg(String img);
+        void showImg(SplashImgBean imgBean);
     }
 
     interface Model extends BaseModel{

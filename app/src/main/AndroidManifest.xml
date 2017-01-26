@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".ui.main.MainActivity"
+            android:label="@string/toolbar_title_main"/>
 
     </application>
 

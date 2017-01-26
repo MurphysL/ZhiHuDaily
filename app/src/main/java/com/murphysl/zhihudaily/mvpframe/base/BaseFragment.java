@@ -31,10 +31,10 @@ public class BaseFragment<M extends BaseModel , P extends BasePresenter> extends
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = TUtil.getT(this, 0);
-        model = TUtil.getT(this, 1);
+        presenter = TUtil.getT(this, 1);
+        model = TUtil.getT(this, 0);
         if(this instanceof BaseView)
-            presenter.attachVM(this , model);
+            presenter.attachMV(model , this);
         initData();
     }
 
@@ -42,9 +42,18 @@ public class BaseFragment<M extends BaseModel , P extends BasePresenter> extends
     public void onDestroy() {
         super.onDestroy();
         if(presenter != null)
-            presenter.detachVM();
+            presenter.detachMV();
     }
 
     protected void initData(){ }
 
+    @Override
+    public void onRequestError(String msg) {
+
+    }
+
+    @Override
+    public void onRequestEnd() {
+
+    }
 }

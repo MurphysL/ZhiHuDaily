@@ -1,5 +1,8 @@
 package com.murphysl.zhihudaily.mvpframe.rx;
 
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+
 /**
  * RxManager
  *
@@ -10,5 +13,14 @@ package com.murphysl.zhihudaily.mvpframe.rx;
 
 public class RxManager {
 
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+
+    public void add (Disposable m){
+        compositeDisposable.add(m);
+    }
+
+    public void clear() {
+        compositeDisposable.clear();
+    }
 
 }
