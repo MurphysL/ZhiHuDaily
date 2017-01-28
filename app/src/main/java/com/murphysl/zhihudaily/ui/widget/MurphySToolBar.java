@@ -2,6 +2,7 @@ package com.murphysl.zhihudaily.ui.widget;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 
@@ -17,15 +18,15 @@ public class MurphySToolBar extends Toolbar {
 
     private MurphySToolBar.Builder builder;
 
-    public MurphySToolBar(Context context) {
-        this(context , null , 0);
+    protected MurphySToolBar(Context context) {
+        this(context , null);
     }
 
-    public MurphySToolBar(Context context, @Nullable AttributeSet attrs) {
+    protected MurphySToolBar(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs , 0);
     }
 
-    public MurphySToolBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    protected MurphySToolBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -35,12 +36,17 @@ public class MurphySToolBar extends Toolbar {
         private MurphySToolBar.Builder navigationIcon;
         private MurphySToolBar.Builder title;
 
+        public Builder(Context context) {
+            this.context = context;
+            murphySToolBar = new MurphySToolBar(context);
+        }
+
         public MurphySToolBar.Builder setNavigationIcon(int icon) {
             murphySToolBar.setNavigationIcon(icon);
             return this;
         }
 
-        public MurphySToolBar.Builder setTitle(int title) {
+        public MurphySToolBar.Builder setTitle(@StringRes  int title) {
             murphySToolBar.setTitle(title);
             return this;
         }

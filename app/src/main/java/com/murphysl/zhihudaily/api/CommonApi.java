@@ -2,6 +2,7 @@ package com.murphysl.zhihudaily.api;
 
 import com.murphysl.zhihudaily.bean.LatestNewsBean;
 import com.murphysl.zhihudaily.bean.SplashImgBean;
+import com.murphysl.zhihudaily.bean.ThemesBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -21,6 +22,9 @@ public interface CommonApi {
 
     @GET("news/latest")
     Observable<LatestNewsBean> getLatestNews();
+
+    @GET("theme/11")
+    Observable<ThemesBean> getThemesBean();
 
 
 }

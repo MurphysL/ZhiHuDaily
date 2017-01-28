@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.FrameLayout;
 
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.mvpframe.base.BaseActivity;
+import com.murphysl.zhihudaily.ui.widget.MurphySToolBar;
 
 import butterknife.BindView;
 
@@ -55,5 +57,6 @@ public class MainActivity extends BaseActivity{
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.content, mainFragment);
         fragmentTransaction.commit();
+
     }
 }

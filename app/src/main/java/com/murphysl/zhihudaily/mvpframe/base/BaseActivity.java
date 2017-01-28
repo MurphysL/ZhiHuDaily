@@ -26,7 +26,6 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        initData();
         initView();
         initFragment();
         initListener();
@@ -49,8 +48,6 @@ public class BaseActivity extends AppCompatActivity {
         super.setContentView(view, params);
         ButterKnife.bind(this);
     }
-
-    protected void initData(){ }
 
     protected void initView(){ }
 

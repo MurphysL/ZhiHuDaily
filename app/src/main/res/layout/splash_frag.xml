@@ -4,14 +4,14 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:background="@color/colorSplashBackground"
+        android:background="@color/colorBlack"
         android:id="@+id/contentFrame"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp" />
 
     <RelativeLayout
-        android:background="@color/colorSplashBackground"
+        android:background="@color/colorBlack"
         android:layout_width="match_parent"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"

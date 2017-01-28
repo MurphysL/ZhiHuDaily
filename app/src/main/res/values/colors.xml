@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorLittleGray">#C7C7C7</color>
     <color name="colorLightBlue">#0099FF</color>
     <color name="colorDayPrimary">#00A2ED</color>
     <color name="colorDayPrimaryDark">#008FD2</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorSplashBackground">#17181A</color>
+    <color name="colorBlack">#17181A</color>
 </resources>

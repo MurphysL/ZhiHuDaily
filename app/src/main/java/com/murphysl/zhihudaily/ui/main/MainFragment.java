@@ -3,21 +3,19 @@ package com.murphysl.zhihudaily.ui.main;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.murphysl.zhihudaily.R;
+import com.murphysl.zhihudaily.adapter.base.MultiItemTypeAdapter;
+import com.murphysl.zhihudaily.adapter.delegate.LatestNewsStoriesDelegate;
 import com.murphysl.zhihudaily.bean.LatestNewsBean;
 import com.murphysl.zhihudaily.mvpframe.base.BaseFragment;
-import com.murphysl.zhihudaily.mvpframe.base.TestAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,15 +40,16 @@ public class MainFragment extends BaseFragment<MainModel , MainPresenter> implem
     SwipeRefreshLayout swipe;
 
     //List<LatestNewsBean> latestNewsBeen = new ArrayList<>();
-    List<LatestNewsBean.StoriesBean> list = new ArrayList<>();
-    TestAdapter adapter;
+    private List<LatestNewsBean.StoriesBean> list = new ArrayList<>();
+    private MultiItemTypeAdapter<LatestNewsBean.StoriesBean> adapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.main_frag, container, false);
         recyclerview = (RecyclerView) root.findViewById(R.id.recyclerview);
-        adapter = new TestAdapter(getContext() , list);
+        adapter = new MultiItemTypeAdapter(getContext() , list);
+        adapter.addItemViewDelegate(new LatestNewsStoriesDelegate());
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setAdapter(adapter);
         ButterKnife.bind(this, root);
