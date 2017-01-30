@@ -2,7 +2,6 @@ package com.murphysl.zhihudaily.adapter.wrapper;
 
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -12,12 +11,14 @@ import com.murphysl.zhihudaily.adapter.base.BaseViewHolder;
 /**
  * HeaderAndFooterWrapper
  *
+ * 不支持GridLayout
+ *
  * @author: MurphySL
  * @time: 2017/1/28 23:33
  */
 
 
-public class HeaderAndFooterWrapper extends RecyclerView.Adapter<BaseViewHolder> {
+public class HeaderAndFooterWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int HEADER_ITEM_TYPE = 100000;
     private static final int FOOTER_ITEM_TYPE = 200000;
@@ -44,25 +45,28 @@ public class HeaderAndFooterWrapper extends RecyclerView.Adapter<BaseViewHolder>
     }
 
     @Override
-    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (headers.get(viewType) != null) {
-            BaseViewHolder holder = BaseViewHolder.createViewHolder(parent.getContext(), mHeaderViews.get(viewType));
+            BaseViewHolder holder = BaseViewHolder.createViewHolder(parent.getContext(), headers.get(viewType));
             return holder;
         } else if (footers.get(viewType) != null) {
-            ViewHolder holder = ViewHolder.createViewHolder(parent.getContext(), mFootViews.get(viewType));
+            BaseViewHolder holder = BaseViewHolder.createViewHolder(parent.getContext(), footers.get(viewType));
             return holder;
         }
-        return mInnerAdapter.onCreateViewHolder(parent, viewType);
+        return adapter.onCreateViewHolder(parent, viewType);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+        if(isFooterViewPos(position) || isHeaderViewPos(position)){
+            return;
+        }
+        adapter.onBindViewHolder(holder , position);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return getRealItemCount() + getFootersCount() + getHeadersCount();
     }
 
     private int getRealItemCount() {

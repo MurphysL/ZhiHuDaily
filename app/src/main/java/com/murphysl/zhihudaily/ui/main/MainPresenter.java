@@ -1,7 +1,6 @@
 package com.murphysl.zhihudaily.ui.main;
 
-import com.murphysl.zhihudaily.bean.LatestNewsBean;
-import com.murphysl.zhihudaily.mvpframe.base.BasePresenter;
+import com.murphysl.zhihudaily.bean.ThemesBean;
 
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
@@ -15,23 +14,24 @@ import io.reactivex.functions.Consumer;
 
 
 public class MainPresenter extends MainContract.Presenter {
+    private static final String TAG = "MainActivity";
 
     @Override
-    void getLatestNews() {
-        rx.add(model.getLatestNews().subscribe(
-                new Consumer<LatestNewsBean>() {
+    void getThemes() {
+        rx.add(model.getThemes().subscribe(
+                new Consumer<ThemesBean>() {
                     @Override
-                    public void accept(LatestNewsBean latestNewsBean) throws Exception {
-                        view.showLatestNews(latestNewsBean);
+                    public void accept(ThemesBean themesBean) throws Exception {
+                        view.showThemes(themesBean);
                     }
-                }
-                , new Consumer<Throwable>() {
+                },
+                new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         view.onRequestError(throwable.toString());
                     }
-                }
-                , new Action() {
+                },
+                new Action() {
                     @Override
                     public void run() throws Exception {
                         view.onRequestEnd();

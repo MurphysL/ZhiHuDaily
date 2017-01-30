@@ -1,26 +1,26 @@
-package com.murphysl.zhihudaily.ui.drawer;
+package com.murphysl.zhihudaily.ui.detail;
 
-import com.murphysl.zhihudaily.bean.ThemesBean;
+import com.murphysl.zhihudaily.bean.DetailNews;
 
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 
 /**
- * DrawerPresenter
+ * DetailPresenter
  *
  * @author: MurphySL
- * @time: 2017/1/28 18:15
+ * @time: 2017/1/30 19:44
  */
 
 
-public class DrawerPresenter extends DrawerContract.Presenter {
+public class DetailPresenter extends DetailContract.Presenter {
     @Override
-    void getThemes() {
-        rx.add(model.getThemes().subscribe(
-                new Consumer<ThemesBean>() {
+    void getDetailNews(int id) {
+        rx.add(model.getDetailNews(id).subscribe(
+                new Consumer<DetailNews>() {
                     @Override
-                    public void accept(ThemesBean themesBean) throws Exception {
-                        view.showThemes(themesBean);
+                    public void accept(DetailNews detailNews) throws Exception {
+                        view.showDetailNews(detailNews);
                     }
                 },
                 new Consumer<Throwable>() {

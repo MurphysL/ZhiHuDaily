@@ -1,8 +1,12 @@
 package com.murphysl.zhihudaily.base;
 
-import android.support.v4.app.Fragment;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+
+import com.murphysl.zhihudaily.R;
 
 /**
  * BaseActivity
@@ -14,9 +18,38 @@ import android.view.KeyEvent;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    protected abstract int getContentViewId();
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(getContentViewId());
+        initView();
+    }
 
-    protected abstract int getFragmentViewId();
+    @Override
+    public void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        if(getIntent() != null){
+            handleIntent(getIntent());
+        }
+        if(getSupportFragmentManager() != null){
+            BaseFragment firstFragment = getFirstFragment();
+            if(firstFragment != null)
+                addFragment(firstFragment);
+        }
+        initData();
+    }
+
+    protected void initData(){ }
+
+    protected abstract void initView();
+
+    protected void handleIntent (Intent intent){ }
+
+    protected int getContentViewId(){ return R.layout.activity_main;}
+
+    protected int getFragmentViewId(){ return R.id.content;}
+
+    protected BaseFragment getFirstFragment(){ return null;}
 
     protected void addFragment(BaseFragment fragment){
         if(fragment != null){

@@ -1,32 +1,32 @@
-package com.murphysl.zhihudaily.ui.drawer;
+package com.murphysl.zhihudaily.ui.detail;
 
-import com.murphysl.zhihudaily.bean.ThemesBean;
+
+import com.murphysl.zhihudaily.bean.DetailNews;
 import com.murphysl.zhihudaily.mvpframe.base.BaseModel;
 import com.murphysl.zhihudaily.mvpframe.base.BasePresenter;
 import com.murphysl.zhihudaily.mvpframe.base.BaseView;
-import com.murphysl.zhihudaily.ui.splash.SplashContract;
 
 import io.reactivex.Observable;
 
 /**
- * DrawerContract
+ * DetailContract
  *
  * @author: MurphySL
- * @time: 2017/1/28 18:15
+ * @time: 2017/1/30 19:39
  */
 
 
-public interface DrawerContract {
+public interface DetailContract {
 
     interface View extends BaseView{
-        void showThemes(ThemesBean bean);
+        void showDetailNews(DetailNews detailBean);
     }
 
     interface Model extends BaseModel{
-        Observable<ThemesBean> getThemes();
+        Observable<DetailNews> getDetailNews(int id);
     }
 
     abstract class Presenter extends BasePresenter<Model , View>{
-        abstract void getThemes();
+        abstract void getDetailNews(int id);
     }
 }

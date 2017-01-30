@@ -10,4 +10,5 @@ package com.murphysl.zhihudaily;
 
 public class Constants {
     public static final String baseUrl = "http://news-at.zhihu.com/api/4/";
+    public static final String newsId = "NEWS_ID";
 }

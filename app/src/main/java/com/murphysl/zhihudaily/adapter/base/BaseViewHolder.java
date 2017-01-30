@@ -38,9 +38,14 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         views = new SparseArrayCompat<>();
     }
 
+    public static BaseViewHolder createViewHolder(Context context , View itemView){
+        BaseViewHolder viewHolder = new BaseViewHolder(context , itemView);
+        return viewHolder;
+    }
+
     public static BaseViewHolder createViewHolder(Context context , ViewGroup parent , @LayoutRes int layoutID ){
-        View view = LayoutInflater.from(context).inflate(layoutID , parent , false);
-        BaseViewHolder viewHolder = new BaseViewHolder(context , view);
+        View itemView = LayoutInflater.from(context).inflate(layoutID , parent , false);
+        BaseViewHolder viewHolder = new BaseViewHolder(context , itemView);
         return viewHolder;
     }
 
