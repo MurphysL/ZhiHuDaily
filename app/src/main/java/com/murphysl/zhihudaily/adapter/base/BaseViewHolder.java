@@ -49,6 +49,10 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return viewHolder;
     }
 
+    public View getItemView(){
+        return itemView;
+    }
+
     public <T extends View> T getView(@IdRes int viewId){
         View view = views.get(viewId);
         if(view == null){

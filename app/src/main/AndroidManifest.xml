@@ -19,6 +19,7 @@
 
         <activity android:name=".ui.main.MainActivity"
             android:label="@string/toolbar_title_main"/>
+        <activity android:name=".ui.detail.DetailActivity"/>
 
     </application>
 

@@ -1,5 +1,6 @@
 package com.murphysl.zhihudaily.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.murphysl.zhihudaily.Constants;
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.adapter.base.MultiItemTypeAdapter;
 import com.murphysl.zhihudaily.adapter.delegate.LatestNewsStoriesDelegate;

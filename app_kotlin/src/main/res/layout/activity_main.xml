@@ -8,6 +8,27 @@
     <include layout="@layout/app_bar_main" android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <fragment
+            android:id="@+id/one"
+            android:name="com.murphysl.app_kotlin.F1"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            tools:layout="@layout/one_frag" />
+
+        <fragment
+            android:id="@+id/two"
+            android:name="com.murphysl.app_kotlin.F2"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            tools:layout="@layout/two_fragment" />
+    </LinearLayout>
+
     <android.support.design.widget.NavigationView android:id="@+id/nav_view"
         android:layout_width="wrap_content" android:layout_height="match_parent"
         android:layout_gravity="start" android:fitsSystemWindows="true"

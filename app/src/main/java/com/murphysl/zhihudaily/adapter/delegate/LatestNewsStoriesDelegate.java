@@ -1,12 +1,17 @@
 package com.murphysl.zhihudaily.adapter.delegate;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
+import com.murphysl.zhihudaily.Constants;
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.adapter.base.BaseViewHolder;
 import com.murphysl.zhihudaily.adapter.base.ItemViewDelegate;
 import com.murphysl.zhihudaily.bean.LatestNewsBean;
+import com.murphysl.zhihudaily.ui.detail.DetailActivity;
 
 /**
  * LatestNewsStoriesDelegate
@@ -28,8 +33,18 @@ public class LatestNewsStoriesDelegate implements ItemViewDelegate<LatestNewsBea
     }
 
     @Override
-    public void convert(BaseViewHolder viewHolder, LatestNewsBean.StoriesBean storiesBean, int position) {
+    public void convert(final BaseViewHolder viewHolder, final LatestNewsBean.StoriesBean storiesBean, int position) {
         viewHolder.setText(R.id.title_main , storiesBean.getTitle());
         viewHolder.setImageUrl(R.id.img_main , storiesBean.getImages().get(0));
+
+        viewHolder.getItemView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = viewHolder.getItemView().getContext();
+                Intent intent = new Intent(context , DetailActivity.class);
+                intent.putExtra(Constants.newsId , storiesBean.getId());
+                context.startActivity(intent);
+            }
+        });
     }
 }
