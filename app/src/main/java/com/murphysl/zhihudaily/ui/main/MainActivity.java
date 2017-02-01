@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
@@ -60,6 +61,9 @@ public class MainActivity extends MVPActivity<MainModel , MainPresenter> impleme
         adapter.addItemViewDelegate(new ThemesDelegate());
         wrapper = new HeaderAndFooterWrapper(adapter);
         head = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.drawer_head , null);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT ,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        head.setLayoutParams(layoutParams);
         wrapper.addHeaderView(head);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(wrapper);

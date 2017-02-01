@@ -58,10 +58,9 @@ public class HeaderAndFooterWrapper extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if(isFooterViewPos(position) || isHeaderViewPos(position)){
+        if(isFooterViewPos(position) || isHeaderViewPos(position))
             return;
-        }
-        adapter.onBindViewHolder(holder , position);
+        adapter.onBindViewHolder(holder , position - getHeadersCount());
     }
 
     @Override
@@ -82,8 +81,7 @@ public class HeaderAndFooterWrapper extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
 
-    public void addHeaderView(View view)
-    {
+    public void addHeaderView(View view) {
         headers.put(headers.size() + HEADER_ITEM_TYPE, view);
     }
 

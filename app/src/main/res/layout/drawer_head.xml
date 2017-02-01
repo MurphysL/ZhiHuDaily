@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/colorLightBlue"
     android:layout_width="match_parent"
-    android:layout_height="120dp">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/header_info"
@@ -11,7 +11,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="120dp">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
             android:src="@mipmap/ic_avatar"
@@ -71,7 +71,32 @@
                     android:layout_height="match_parent" />
             </LinearLayout>
         </LinearLayout>
+
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/header_home"
+        android:background="@color/colorGray"
+        android:layout_below="@+id/header_info"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:id="@+id/drawer_home_logo"
+            android:layout_centerVertical="true"
+            android:src="@drawable/drawer_home"
+            android:layout_marginLeft="24dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:text="@string/drawer_home"
+            android:textSize="16sp"
+            android:layout_toEndOf="@+id/drawer_home_logo"
+            android:textColor="@color/colorLightBlue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
 
 </RelativeLayout>
