@@ -1,0 +1,32 @@
+<vector
+    android:height="200dp"
+    android:width="200dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group>
+        <path
+            android:strokeColor="@color/colorWhite"
+            android:strokeWidth="2"
+            android:pathData="
+            M15,5
+            L85,5
+            A10,10,0,0,1,95,15
+            L95,85
+            A10,10,0,0,1,85,95
+            L15,95
+            A10,10,0,0,1,5,85
+            L4,15
+            A10,10,0,0,1,15,5"/>
+    </group>
+
+    <group>
+        <path
+            android:name="circle"
+            android:strokeColor="@color/colorWhite"
+            android:strokeWidth="8"
+            android:strokeLineCap="round"
+            android:pathData="M50,75 A25,25,0,1,1 ,75,50"/>
+    </group>
+</vector>

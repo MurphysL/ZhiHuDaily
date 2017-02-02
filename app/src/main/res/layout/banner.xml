@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:id="@+id/bannerLayout"
+             android:layout_width="match_parent"
+             android:layout_height="200dp">
+
+    <TextView
+        android:id="@+id/banner_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="left"
+        android:maxLines="3"
+        android:padding="16dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="图片轮播器"
+        tools:textColor="@color/colorLightBlue"/>
+    
+    <LinearLayout
+        android:id="@+id/indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+
+    </LinearLayout>
+
+    <com.murphysl.zhihudaily.ui.widget.Banner.BannerViewPaper
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</FrameLayout>

@@ -1,9 +1,12 @@
 package com.murphysl.zhihudaily.ui.splash;
 
 import android.content.Intent;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.bean.SplashImgBean;
@@ -22,6 +25,9 @@ import io.reactivex.disposables.Disposable;
 /**
  * SplashActivity
  *
+ * 1、先展示logo 再出现图片
+ * 2、Splash每日出现一次
+ *
  * @author: MurphySL
  * @time: 2017/1/19 12:41
  */
@@ -31,6 +37,8 @@ public class SplashActivity extends MVPActivity<SplashModel, SplashPresenter> im
     private static final String TAG = "SplashActivity";
 
     private ImageView img;
+    private ImageView logo;
+    private TextView text;
 
     @Override
     protected int getContentViewId() {
@@ -45,15 +53,24 @@ public class SplashActivity extends MVPActivity<SplashModel, SplashPresenter> im
     @Override
     protected void initView() {
         img = (ImageView) findViewById(R.id.splash_img);
+        logo = (ImageView) findViewById(R.id.splash_logo);
+        text = (TextView) findViewById(R.id.splash_text);
+
+        Drawable drawable = logo.getDrawable();
+        if(drawable instanceof Animatable)
+            ((Animatable) drawable).start();
     }
 
     @Override
     public void showImg(SplashImgBean imgBean) {
+        if(imgBean == null)
+            return;
         Log.i(TAG, "showImg: " + imgBean.toString());
         Picasso.with(this)
                 .load(imgBean.getImg())
                 .fit()
                 .into(img);
+        text.setText(imgBean.getText());
     }
 
     @Override
