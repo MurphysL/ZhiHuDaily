@@ -171,6 +171,15 @@ public class DetailNews {
         public void setName(String name) {
             this.name = name;
         }
+
+        @Override
+        public String toString() {
+            return "SectionBean{" +
+                    "thumbnail='" + thumbnail + '\'' +
+                    ", id=" + id +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
     }
 
     public static class RecommendersBean {
@@ -187,5 +196,30 @@ public class DetailNews {
         public void setAvatar(String avatar) {
             this.avatar = avatar;
         }
+
+        @Override
+        public String toString() {
+            return "RecommendersBean{" +
+                    "avatar='" + avatar + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "DetailNews{" +
+                "body='" + body + '\'' +
+                //", image_source='" + image_source + '\'' +
+                //", title='" + title + '\'' +
+                //", image='" + image + '\'' +
+                //", share_url='" + share_url + '\'' +
+                //", ga_prefix='" + ga_prefix + '\'' +
+                //", section=" + section.toString() +
+                //", type=" + type +
+                //", id=" + id +
+                //", js=" + js +
+                //", recommenders=" + recommenders.toString() +
+                //", css=" + css +
+                '}';
     }
 }
