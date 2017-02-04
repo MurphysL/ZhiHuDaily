@@ -1,5 +1,6 @@
 package com.murphysl.zhihudaily.api;
 
+import com.murphysl.zhihudaily.bean.BeforeNewsBean;
 import com.murphysl.zhihudaily.bean.DetailNews;
 import com.murphysl.zhihudaily.bean.LatestNewsBean;
 import com.murphysl.zhihudaily.bean.SplashImgBean;
@@ -25,6 +26,9 @@ public interface CommonApi {
 
     @GET("news/latest")
     Observable<LatestNewsBean> getLatestNews();
+
+    @GET("news/before/{date}")
+    Observable<BeforeNewsBean> getBeforeNews(@Path("date") String date);
 
     @GET("news/{id}")
     Observable<DetailNews> getDetailNews(@Path("id") int id);

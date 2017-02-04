@@ -16,7 +16,7 @@
             app:layoutManager="LinearLayoutManager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/main_content_item"></android.support.v7.widget.RecyclerView>
+            tools:listitem="@layout/stories_item"></android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

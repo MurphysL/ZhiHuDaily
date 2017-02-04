@@ -1,5 +1,6 @@
 package com.murphysl.zhihudaily.ui.home;
 
+import com.murphysl.zhihudaily.bean.BeforeNewsBean;
 import com.murphysl.zhihudaily.bean.LatestNewsBean;
 import com.murphysl.zhihudaily.mvpframe.base.BaseModel;
 import com.murphysl.zhihudaily.mvpframe.base.BasePresenter;
@@ -18,13 +19,16 @@ import io.reactivex.Observable;
 public interface HomeContract{
     interface View extends BaseView{
         void showLatestNews(LatestNewsBean latestNewsBean);
+        void showBeforeNews(BeforeNewsBean beforeNewsBean);
     }
 
     interface Model extends BaseModel{
         Observable<LatestNewsBean> getLatestNews();
+        Observable<BeforeNewsBean> getBeforeNews(String date);
     }
 
     abstract class Presenter extends BasePresenter<Model, View> {
         abstract void getLatestNews();
+        abstract void getBeforeNews(String date);
     }
 }

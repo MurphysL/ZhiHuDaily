@@ -8,11 +8,16 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.murphysl.zhihudaily.Constants;
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.adapter.base.MultiItemTypeAdapter;
-import com.murphysl.zhihudaily.adapter.delegate.LatestNewsStoriesDelegate;
+import com.murphysl.zhihudaily.adapter.delegate.StoriesDelegate;
+import com.murphysl.zhihudaily.adapter.delegate.StoriesTimeDelegate;
 import com.murphysl.zhihudaily.adapter.wrapper.HeaderAndFooterWrapper;
+import com.murphysl.zhihudaily.bean.BeforeNewsBean;
 import com.murphysl.zhihudaily.bean.LatestNewsBean;
+import com.murphysl.zhihudaily.bean.NewsBean;
+import com.murphysl.zhihudaily.bean.TimeBean;
 import com.murphysl.zhihudaily.mvpframe.base.MVPFragment;
 import com.murphysl.zhihudaily.ui.widget.Banner.Banner;
 
@@ -35,13 +40,15 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
     private SwipeRefreshLayout swipe;
     private Banner banner;
 
-    private List<LatestNewsBean.StoriesBean> storiesList = new ArrayList<>();
+    private List<NewsBean> newsList = new ArrayList<>();
     private List<LatestNewsBean.TopStoriesBean> topList = new ArrayList<>();
     private List<String> img = new ArrayList<>();
     private List<String> title = new ArrayList<>();
 
-    private MultiItemTypeAdapter<LatestNewsBean.StoriesBean> adapter;
+    private MultiItemTypeAdapter<NewsBean> adapter;
     private HeaderAndFooterWrapper wrapper;
+
+    private String date = Constants.latestTime;
 
     @Override
     public void showLatestNews(LatestNewsBean latestNewsBean) {
@@ -49,8 +56,12 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
             Log.i(TAG, "showLatestNews: ");
         Log.i(TAG, "showLatestNews: " + latestNewsBean.toString());
 
+        TimeBean timeBean = new TimeBean();
+        timeBean.setTime(date);
+        newsList.add(timeBean);
+        date = latestNewsBean.getDate();
         for(int i = 0 ;i < latestNewsBean.getStories().size() ;i ++){
-            storiesList.add(latestNewsBean.getStories().get(i));
+            newsList.add(latestNewsBean.getStories().get(i));
         }
         wrapper.notifyDataSetChanged();
 
@@ -64,6 +75,21 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
     }
 
     @Override
+    public void showBeforeNews(BeforeNewsBean beforeNewsBean) {
+        if(beforeNewsBean == null)
+            return;
+
+        TimeBean timeBean = new TimeBean();
+        timeBean.setTime(date);
+        newsList.add(timeBean);
+        date = beforeNewsBean.getDate();
+        for(int i = 0 ;i < beforeNewsBean.getStories().size() ;i ++){
+            newsList.add(beforeNewsBean.getStories().get(i));
+        }
+        wrapper.notifyDataSetChanged();
+    }
+
+    @Override
     protected void initData() {
         presenter.getLatestNews();
     }
@@ -72,8 +98,9 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
     protected void initView(View view, Bundle saveInstanceState) {
         recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview);
         swipe = (SwipeRefreshLayout) view.findViewById(R.id.swipe);
-        adapter = new MultiItemTypeAdapter(getContext() , storiesList);
-        adapter.addItemViewDelegate(new LatestNewsStoriesDelegate());
+        adapter = new MultiItemTypeAdapter(getContext() , newsList);
+        adapter.addItemViewDelegate(new StoriesDelegate());
+        adapter.addItemViewDelegate(new StoriesTimeDelegate());
         wrapper = new HeaderAndFooterWrapper(adapter);
 
         banner = new Banner(getContext());
@@ -92,7 +119,7 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
 
     @Override
     public void onRequestEnd() {
-
+        presenter.getBeforeNews(date);
     }
 
     @Override
