@@ -6,4 +6,6 @@
     <string name="drawer_star">我的收藏</string>
     <string name="drawer_download">离线下载</string>
     <string name="drawer_home">首页</string>
+
+    <string name="editor">主编</string>
 </resources>

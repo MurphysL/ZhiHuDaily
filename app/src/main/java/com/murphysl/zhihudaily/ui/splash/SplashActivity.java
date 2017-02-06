@@ -62,25 +62,10 @@ public class SplashActivity extends MVPActivity<SplashModel, SplashPresenter> im
     }
 
     @Override
-    public void showImg(SplashImgBean imgBean) {
+    public void showImg(final SplashImgBean imgBean) {
         if(imgBean == null)
             return;
         Log.i(TAG, "showImg: " + imgBean.toString());
-        Picasso.with(this)
-                .load(imgBean.getImg())
-                .fit()
-                .into(img);
-        text.setText(imgBean.getText());
-    }
-
-    @Override
-    public void onRequestError(String msg) {
-        Log.i(TAG, "onRequestError: " + msg.toString());
-        Snackbar.make(img , msg.toString() , Snackbar.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onRequestEnd() {
         Observable.timer(2 , TimeUnit.SECONDS)
                 .compose(RxSchedulerHelper.<Long>io_main())
                 .subscribe(new Observer<Long>() {
@@ -91,7 +76,11 @@ public class SplashActivity extends MVPActivity<SplashModel, SplashPresenter> im
 
                     @Override
                     public void onNext(Long value) {
-                        startActivity(new Intent(SplashActivity.this , MainActivity.class));
+                        Picasso.with(SplashActivity.this)
+                                .load(imgBean.getImg())
+                                .fit()
+                                .into(img);
+                        text.setText(imgBean.getText());
                     }
 
                     @Override
@@ -104,6 +93,46 @@ public class SplashActivity extends MVPActivity<SplashModel, SplashPresenter> im
 
                     }
                 });
+    }
+
+    private void startNextActivity(){
+        Observable.timer(3 , TimeUnit.SECONDS)
+                .compose(RxSchedulerHelper.<Long>io_main())
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Long value) {
+                        startActivity(new Intent(SplashActivity.this , MainActivity.class));
+                        finish();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    @Override
+    public void onRequestError(String msg) {
+        Log.i(TAG, "onRequestError: " + msg.toString());
+        Snackbar.make(img , msg.toString() , Snackbar.LENGTH_SHORT).show();
+
+        startNextActivity();
+    }
+
+    @Override
+    public void onRequestEnd() {
+        startNextActivity();
     }
 
 }

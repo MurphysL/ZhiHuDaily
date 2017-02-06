@@ -1,31 +1,26 @@
-package com.murphysl.zhihudaily.ui.splash;
+package com.murphysl.zhihudaily.ui.theme;
 
-import com.murphysl.zhihudaily.bean.SplashImgBean;
+import com.murphysl.zhihudaily.bean.ThemeNewsBean;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 
-
 /**
- * SplashPresenter
+ * ThemePresenter
  *
  * @author: MurphySL
- * @time: 2017/1/19 12:42
+ * @time: 2017/2/6 15:53
  */
 
 
-public class SplashPresenter extends SplashContract.Presenter {
-
+public class ThemePresenter extends ThemeContract.Presenter {
     @Override
-    void getSplashImg() {
-
-        rx.add( model.getSplashImg().subscribe(
-                new Consumer<SplashImgBean>() {
+    void getThemeNews(int id) {
+        rx.add(model.getThemeNews(id).subscribe(
+                new Consumer<ThemeNewsBean>() {
                     @Override
-                    public void accept(SplashImgBean imgBean) throws Exception {
-                        view.showImg(imgBean);
+                    public void accept(ThemeNewsBean themeNewsBean) throws Exception {
+                        view.showThemeNews(themeNewsBean);
                     }
                 },
                 new Consumer<Throwable>() {
@@ -33,14 +28,13 @@ public class SplashPresenter extends SplashContract.Presenter {
                     public void accept(Throwable throwable) throws Exception {
                         view.onRequestError(throwable.toString());
                     }
-                } ,
+                },
                 new Action() {
                     @Override
                     public void run() throws Exception {
                         view.onRequestEnd();
                     }
-                }));
-
+                }
+        ));
     }
-
 }

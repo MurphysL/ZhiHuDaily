@@ -5,6 +5,7 @@
     <color name="colorLightGray">#E0E0E0</color>
     <color name="colorLittleGray">#C7C7C7</color>
     <color name="colorDeepGray">#FF8F8F8F</color>
+    <color name="colorDarkGray">#494949</color>
     <color name="colorLightBlue">#0099FF</color>
     <color name="colorDayPrimary">#00A2ED</color>
     <color name="colorDayPrimaryDark">#008FD2</color>

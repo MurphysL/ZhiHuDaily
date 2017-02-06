@@ -14,14 +14,15 @@ import com.murphysl.zhihudaily.bean.StoriesBean;
 import com.murphysl.zhihudaily.ui.detail.DetailActivity;
 
 /**
- * StoriesDelegate
+ * ThemeNewsDelegate
  *
  * @author: MurphySL
- * @time: 2017/1/28 22:31
+ * @time: 2017/2/6 17:28
  */
 
 
-public class StoriesDelegate implements ItemViewDelegate<NewsBean> {
+public class ThemeNewsDelegate implements ItemViewDelegate<NewsBean> {
+
     @Override
     public int getItemViewLayoutId() {
         return R.layout.stories_item;
@@ -33,11 +34,13 @@ public class StoriesDelegate implements ItemViewDelegate<NewsBean> {
     }
 
     @Override
-    public void convert(final BaseViewHolder viewHolder, final NewsBean storiesBean, int position) {
-        viewHolder.setText(R.id.title_main , ((StoriesBean)storiesBean).getTitle());
-        viewHolder.setImageUrl(R.id.img_main , ((StoriesBean)storiesBean).getImages().get(0));
-        if( ((StoriesBean)storiesBean).getImages().size() > 1)
-            viewHolder.setVisible(R.id.img_hint , true);
+    public void convert(final BaseViewHolder viewHolder, final NewsBean newsBean, int position) {
+        viewHolder.setText(R.id.title_main , ((StoriesBean)newsBean).getTitle());
+
+        if( ((StoriesBean)newsBean).getImages() == null)
+            viewHolder.setVisible(R.id.img , false);
+        else
+            viewHolder.setImageUrl(R.id.img_main , ((StoriesBean)newsBean).getImages().get(0));
 
 
         viewHolder.getItemView().setOnClickListener(new View.OnClickListener() {
@@ -45,7 +48,7 @@ public class StoriesDelegate implements ItemViewDelegate<NewsBean> {
             public void onClick(View v) {
                 Context context = viewHolder.getItemView().getContext();
                 Intent intent = new Intent(context , DetailActivity.class);
-                intent.putExtra(Constants.newsId , ((StoriesBean)storiesBean).getId());
+                intent.putExtra(Constants.newsId , ((StoriesBean)newsBean).getId());
                 context.startActivity(intent);
             }
         });

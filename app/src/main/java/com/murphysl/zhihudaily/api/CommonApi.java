@@ -4,6 +4,7 @@ import com.murphysl.zhihudaily.bean.BeforeNewsBean;
 import com.murphysl.zhihudaily.bean.DetailNews;
 import com.murphysl.zhihudaily.bean.LatestNewsBean;
 import com.murphysl.zhihudaily.bean.SplashImgBean;
+import com.murphysl.zhihudaily.bean.ThemeNewsBean;
 import com.murphysl.zhihudaily.bean.ThemesBean;
 
 import io.reactivex.Observable;
@@ -35,6 +36,9 @@ public interface CommonApi {
 
     @GET("themes")
     Observable<ThemesBean> getThemesBean();
+
+    @GET("theme/{theme}")
+    Observable<ThemeNewsBean> getThemeNewsBean(@Path("theme") int id);
 
 
 }

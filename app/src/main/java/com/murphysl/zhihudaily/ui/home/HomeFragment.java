@@ -28,6 +28,9 @@ import java.util.List;
 /**
  * HomeFragment
  *
+ * 多图标签
+ * 分段加载
+ *
  * @author: MurphySL
  * @time: 2017/1/30 19:02
  */

@@ -1,6 +1,9 @@
 package com.murphysl.zhihudaily.adapter.delegate;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.adapter.base.BaseViewHolder;

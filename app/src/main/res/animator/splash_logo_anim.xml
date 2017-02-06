@@ -3,5 +3,5 @@
     android:propertyName="trimPathEnd"
     android:valueTo="1"
     android:valueFrom="0"
-    android:duration="1000"
+    android:duration="2000"
     xmlns:android="http://schemas.android.com/apk/res/android"></objectAnimator>

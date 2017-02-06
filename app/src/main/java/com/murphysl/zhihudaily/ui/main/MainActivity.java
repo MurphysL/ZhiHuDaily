@@ -1,5 +1,7 @@
 package com.murphysl.zhihudaily.ui.main;
 
+import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
+import com.murphysl.zhihudaily.Constants;
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.adapter.base.MultiItemTypeAdapter;
 import com.murphysl.zhihudaily.adapter.delegate.ThemesDelegate;
@@ -20,6 +23,7 @@ import com.murphysl.zhihudaily.base.BaseFragment;
 import com.murphysl.zhihudaily.bean.ThemesBean;
 import com.murphysl.zhihudaily.mvpframe.base.MVPActivity;
 import com.murphysl.zhihudaily.ui.home.HomeFragment;
+import com.murphysl.zhihudaily.ui.theme.ThemeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +70,21 @@ public class MainActivity extends MVPActivity<MainModel , MainPresenter> impleme
         head.setLayoutParams(layoutParams);
         wrapper.addHeaderView(head);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                ThemeFragment fragment = new ThemeFragment();
+                fragment.themeId = bean.get(position).getId();
+                addFragment(fragment);
+
+                drawer.closeDrawers();
+            }
+
+            @Override
+            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+                return false;
+            }
+        });
         recyclerView.setAdapter(wrapper);
     }
 

@@ -53,6 +53,7 @@ public class HeaderAndFooterWrapper extends RecyclerView.Adapter<RecyclerView.Vi
             BaseViewHolder holder = BaseViewHolder.createViewHolder(parent.getContext(), footers.get(viewType));
             return holder;
         }
+
         return adapter.onCreateViewHolder(parent, viewType);
     }
 
@@ -99,4 +100,5 @@ public class HeaderAndFooterWrapper extends RecyclerView.Adapter<RecyclerView.Vi
     {
         return footers.size();
     }
+
 }
