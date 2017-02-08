@@ -5,8 +5,8 @@ import android.support.annotation.NonNull;
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.adapter.base.BaseViewHolder;
 import com.murphysl.zhihudaily.adapter.base.ItemViewDelegate;
-import com.murphysl.zhihudaily.bean.EditorsBean;
 import com.murphysl.zhihudaily.bean.NewsBean;
+import com.murphysl.zhihudaily.bean.ThemeNewsBean;
 
 /**
  * EditorsDelegate
@@ -29,16 +29,15 @@ public class EditorsDelegate implements ItemViewDelegate<NewsBean> {
 
     @Override
     public boolean isForViewType(@NonNull NewsBean data) {
-        return data  instanceof EditorsBean;
+        return data  instanceof ThemeNewsBean;
     }
 
     @Override
     public void convert(BaseViewHolder viewHolder, NewsBean editorsBean, int position) {
-        if(((EditorsBean)editorsBean).getAvatars() == null)
-            return;
-        for(int i = 0 ;i <((EditorsBean)editorsBean).getAvatars().size() ;i ++){
+
+        for(int i = 0 ;i <((ThemeNewsBean)editorsBean).getEditors().size() ;i ++){
             viewHolder.setVisible(avatars[i] , true);
-            viewHolder.setImageUrl(avatars[i] , ((EditorsBean)editorsBean).getAvatars().get(i));
+            viewHolder.setImageUrl(avatars[i] , ((ThemeNewsBean)editorsBean).getEditors().get(i).getAvatar());
         }
     }
 }

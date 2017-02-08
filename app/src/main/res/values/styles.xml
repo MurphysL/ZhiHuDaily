@@ -9,4 +9,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="DetailActivityTheme" parent="AppTheme">
+
+    </style>
+
 </resources>

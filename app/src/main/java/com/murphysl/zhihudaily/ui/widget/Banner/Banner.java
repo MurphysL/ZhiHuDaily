@@ -203,10 +203,14 @@ public class Banner extends FrameLayout implements ViewPager.OnPageChangeListene
         indicator.removeAllViews();
         for (int i = 0; i < count; ++i) {
             ImageView imageView = new ImageView(mContext);
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(mIndicatorWidth, mIndicatorHeight);
-            params.leftMargin = mIndicatorMargin;
-            params.rightMargin = mIndicatorMargin;
+            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            Log.i(TAG, "createIndicator: " + mIndicatorHeight + mIndicatorWidth);
+            //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(mIndicatorWidth, mIndicatorHeight);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(15,15);
+//            params.leftMargin = mIndicatorMargin;
+//            params.rightMargin = mIndicatorMargin;
+            params.leftMargin = 5;
+            params.rightMargin = 5;
             if (i == 0) {
                 imageView.setImageResource(mIndicatorSelectedResId);
             } else {
@@ -345,6 +349,7 @@ public class Banner extends FrameLayout implements ViewPager.OnPageChangeListene
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        Log.i(TAG, "onPageScrolled: ");
         if (mOnPageChangeListener != null) {
             mOnPageChangeListener.onPageScrolled(position, positionOffset, positionOffsetPixels);
         }
@@ -352,6 +357,7 @@ public class Banner extends FrameLayout implements ViewPager.OnPageChangeListene
 
     @Override
     public void onPageSelected(int position) {
+        Log.i(TAG, "onPageSelected: ");
         if (mOnPageChangeListener != null) {
             mOnPageChangeListener.onPageSelected(position);
         }
@@ -361,11 +367,13 @@ public class Banner extends FrameLayout implements ViewPager.OnPageChangeListene
 
         if (position == 0) position = count;
         if (position > count) position = 1;
+        Log.i(TAG, "onPageSelected: ");
         bannerTitle.setText(titleList.get(position - 1));
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
+        Log.i(TAG, "onPageScrollStateChanged: ");
         if (mOnPageChangeListener != null) {
             mOnPageChangeListener.onPageScrollStateChanged(state);
         }

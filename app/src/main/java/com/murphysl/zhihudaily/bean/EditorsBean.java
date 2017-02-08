@@ -1,6 +1,5 @@
 package com.murphysl.zhihudaily.bean;
 
-import java.util.List;
 
 /**
  * EditorsBean
@@ -23,7 +22,7 @@ public class EditorsBean implements NewsBean{
     private String url;
     private String bio;
     private int id;
-    private List<String> avatars;
+    private String avatar;
     private String name;
 
     public String getUrl() {
@@ -50,12 +49,12 @@ public class EditorsBean implements NewsBean{
         this.id = id;
     }
 
-    public List<String> getAvatars() {
-        return avatars;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setAvatars(List<String> avatars) {
-        this.avatars = avatars;
+    public void setAvatars(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getName() {
@@ -71,7 +70,8 @@ public class EditorsBean implements NewsBean{
         return "EditorsBean{" +
                 "url='" + url + '\'' +
                 ", bio='" + bio + '\'' +
-                ", id=" + id + '\'' +
+                ", id=" + id +
+                ", avatar='" + avatar + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }

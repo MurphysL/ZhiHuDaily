@@ -8,7 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 
+import com.murphysl.zhihudaily.Constants;
 import com.murphysl.zhihudaily.R;
+import com.orhanobut.logger.LogLevel;
+import com.orhanobut.logger.Logger;
 
 /**
  * BaseActivity

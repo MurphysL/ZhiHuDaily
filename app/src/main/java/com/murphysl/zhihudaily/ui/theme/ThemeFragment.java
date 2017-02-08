@@ -21,6 +21,7 @@ import com.murphysl.zhihudaily.adapter.wrapper.HeaderAndFooterWrapper;
 import com.murphysl.zhihudaily.bean.NewsBean;
 import com.murphysl.zhihudaily.bean.ThemeNewsBean;
 import com.murphysl.zhihudaily.mvpframe.base.MVPFragment;
+import com.murphysl.zhihudaily.ui.widget.Banner.Banner;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -39,11 +40,11 @@ public class ThemeFragment extends MVPFragment <ThemeModel , ThemePresenter> imp
 
     private RecyclerView recyclerview;
     private SwipeRefreshLayout swipe;
-    private ImageView img;
-    private TextView name;
-    private RelativeLayout head;
+    private Banner banner;
 
     private List<NewsBean> newsList = new ArrayList<>();
+    private List<String> imgs = new ArrayList<>();
+    private List<String> title = new ArrayList<>();
 
     private MultiItemTypeAdapter<NewsBean> adapter;
     private HeaderAndFooterWrapper wrapper;
@@ -56,21 +57,19 @@ public class ThemeFragment extends MVPFragment <ThemeModel , ThemePresenter> imp
 
     @Override
     protected void initView(View view, Bundle saveInstanceState) {
-        img = (ImageView) view.findViewById(R.id.theme_pic);
-        name = (TextView) view.findViewById(R.id.name);
         recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview);
         swipe = (SwipeRefreshLayout) view.findViewById(R.id.swipe);
-
-        head = (RelativeLayout) LayoutInflater.from(getContext()).inflate(R.layout.theme_head , null);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT ,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        head.setLayoutParams(layoutParams);
 
         adapter = new MultiItemTypeAdapter(getContext() , newsList);
         adapter.addItemViewDelegate(new ThemeNewsDelegate());
         adapter.addItemViewDelegate(new EditorsDelegate());
         wrapper = new HeaderAndFooterWrapper(adapter);
-        //wrapper.addHeaderView(head);
+
+        banner = new Banner(getContext());
+        banner.isAutoPlay(true);
+        banner.setDelayTime(4000);
+
+        wrapper.addHeaderView(banner);
 
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setAdapter(wrapper);
@@ -97,18 +96,11 @@ public class ThemeFragment extends MVPFragment <ThemeModel , ThemePresenter> imp
             Log.i(TAG, "showLatestNews: ");
         Log.i(TAG, "showLatestNews: " + themeNewsBean.toString());
 
-        Picasso.with(getContext())
-                .load(themeNewsBean.getImage())
-                .fit()
-                .into(img);
+        imgs.add(themeNewsBean.getImage());
+        title.add(themeNewsBean.getName());
+        banner.update(imgs , title);
 
-        name.setText(themeNewsBean.getName());
-
-        for(int i = 0 ;i < themeNewsBean.getEditors().size() ;i ++){
-            Log.i(TAG, "showThemeNews: " + themeNewsBean.getEditors().toString());
-            newsList.add(themeNewsBean.getEditors().get(i));
-        }
-
+        newsList.add(themeNewsBean);
 
         for(int i = 0 ;i < themeNewsBean.getStories().size() ;i ++){
             Log.i(TAG, "showThemeNews: " + themeNewsBean.getStories().get(i));

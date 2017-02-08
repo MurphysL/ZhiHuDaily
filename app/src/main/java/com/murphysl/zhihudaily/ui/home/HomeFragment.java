@@ -72,7 +72,7 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
             topList.add(latestNewsBean.getTop_stories().get(i));
             img.add(latestNewsBean.getTop_stories().get(i).getImage());
             title.add(latestNewsBean.getTop_stories().get(i).getTitle());
-            Log.i(TAG, "showLatestNews: " + img.get(i));
+            Log.i(TAG, "showLatestNews: " + img.get(i) + title.get(i));
         }
         banner.update(img , title);
     }
@@ -108,7 +108,7 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
 
         banner = new Banner(getContext());
         banner.isAutoPlay(true);
-        banner.setDelayTime(4000);
+        banner.setDelayTime(6000);
 
         wrapper.addHeaderView(banner);
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -122,7 +122,7 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
 
     @Override
     public void onRequestEnd() {
-        presenter.getBeforeNews(date);
+        //presenter.getBeforeNews(date);
     }
 
     @Override
