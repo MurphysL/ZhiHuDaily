@@ -10,7 +10,7 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.murphysl.zhihudaily.Constants;
+import com.murphysl.zhihudaily.config.Constants;
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.bean.DetailNews;
 import com.murphysl.zhihudaily.mvpframe.base.MVPActivity;
@@ -34,21 +34,24 @@ public class DetailActivity extends MVPActivity<DetailModel, DetailPresenter> im
     Toolbar toolbar;
     WebView webview;
     ImageView img;
-    TextView titleDetail;
+    //TextView titleDetail;
     TextView sourceDetail;
     CollapsingToolbarLayout collapsingToolbarLayout;
+    ActionBar actionBar;
 
     private int newsId = -1;
 
     @Override
     protected void initView() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+        setSupportActionBar(toolbar);
         webview = (WebView) findViewById(R.id.webview);
         img = (ImageView) findViewById(R.id.img_detail);
-        titleDetail = (TextView) findViewById(R.id.title_detail);
+        //titleDetail = (TextView) findViewById(R.id.title_detail);
         sourceDetail = (TextView) findViewById(R.id.source_detail);
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbarlayout);
+        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.colorWhite));
+        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.colorWhite));
 
     }
 
@@ -96,7 +99,9 @@ public class DetailActivity extends MVPActivity<DetailModel, DetailPresenter> im
                 .load(detailBean.getImage())
                 .fit()
                 .into(img);
-        titleDetail.setText(detailBean.getTitle());
+        //titleDetail.setText(detailBean.getTitle());
+        collapsingToolbarLayout.setTitle(detailBean.getTitle());
+
         sourceDetail.setText(detailBean.getImage_source());
 
         String data = HtmlUtils.createHtmlData(detailBean.getBody() , detailBean.getCss());

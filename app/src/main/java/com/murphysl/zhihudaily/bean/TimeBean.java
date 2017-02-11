@@ -1,6 +1,6 @@
 package com.murphysl.zhihudaily.bean;
 
-import com.murphysl.zhihudaily.Constants;
+import com.murphysl.zhihudaily.config.Constants;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

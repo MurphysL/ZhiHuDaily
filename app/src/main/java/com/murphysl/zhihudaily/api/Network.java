@@ -2,7 +2,7 @@ package com.murphysl.zhihudaily.api;
 
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import com.murphysl.zhihudaily.Constants;
+import com.murphysl.zhihudaily.config.Constants;
 
 import java.util.concurrent.TimeUnit;
 

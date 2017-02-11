@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/colorLightBlue"
+    android:background="@color/skin_colorTop"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -76,7 +76,7 @@
 
     <RelativeLayout
         android:id="@+id/header_home"
-        android:background="@color/colorGray"
+        android:background="@color/skin_colorDrawerMenuHome"
         android:layout_below="@+id/header_info"
         android:layout_width="match_parent"
         android:layout_height="50dp">
@@ -94,7 +94,7 @@
             android:text="@string/drawer_home"
             android:textSize="16sp"
             android:layout_toEndOf="@+id/drawer_home_logo"
-            android:textColor="@color/colorLightBlue"
+            android:textColor="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </RelativeLayout>

@@ -1,6 +1,5 @@
 package com.murphysl.zhihudaily.ui.main;
 
-import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,21 +8,25 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
-import com.murphysl.zhihudaily.Constants;
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.adapter.base.MultiItemTypeAdapter;
 import com.murphysl.zhihudaily.adapter.delegate.ThemesDelegate;
 import com.murphysl.zhihudaily.adapter.wrapper.HeaderAndFooterWrapper;
 import com.murphysl.zhihudaily.base.BaseFragment;
 import com.murphysl.zhihudaily.bean.ThemesBean;
+import com.murphysl.zhihudaily.config.Constants;
 import com.murphysl.zhihudaily.mvpframe.base.MVPActivity;
 import com.murphysl.zhihudaily.ui.home.HomeFragment;
+import com.murphysl.zhihudaily.ui.skin.SkinManager;
 import com.murphysl.zhihudaily.ui.theme.ThemeFragment;
+import com.murphysl.zhihudaily.util.SharedPreferencesUtils;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,14 +44,18 @@ public class MainActivity extends MVPActivity<MainModel , MainPresenter> impleme
 
     private List<ThemesBean.OthersBean> bean = new ArrayList<>();
 
+    private SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils(this);
+
     @Override
     protected void initView() {
         setSupportActionBar(toolbar);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
 
-        toolbar.setNavigationIcon(R.drawable.menu);
+        toolbar.setNavigationIcon(R.drawable.navigation);
+        toolbar.inflateMenu(R.menu.main_menu);
+        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.menu));
         //setToolBar(toolbar , R.string.toolbar_title_main);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +65,28 @@ public class MainActivity extends MVPActivity<MainModel , MainPresenter> impleme
                 }else{
                     drawer.openDrawer(Gravity.LEFT);
                 }
+            }
+        });
+        final MenuItem switchModel = toolbar.getMenu().findItem(R.id.switch_model);
+        final String model = sharedPreferencesUtils.getSuffix();
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.switch_model:
+                        Logger.i("model" + model);
+                        if(model.equals(Constants.SKIN_SUFFIX_KEY)){
+                            switchModel.setTitle("日间模式");
+                            SkinManager.getInstance().changeSkin("");
+                        }else{
+                            switchModel.setTitle("夜间模式");
+                            SkinManager.getInstance().changeSkin("_dark");
+                        }
+                        Snackbar.make(toolbar , "更换皮肤" , Snackbar.LENGTH_SHORT).show();
+
+                        break;
+                }
+                return false;
             }
         });
 

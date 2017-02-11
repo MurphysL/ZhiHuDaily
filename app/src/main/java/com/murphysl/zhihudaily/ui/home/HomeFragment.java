@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.murphysl.zhihudaily.Constants;
+import com.murphysl.zhihudaily.config.Constants;
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.adapter.base.MultiItemTypeAdapter;
 import com.murphysl.zhihudaily.adapter.delegate.StoriesDelegate;
@@ -28,8 +28,9 @@ import java.util.List;
 /**
  * HomeFragment
  *
- * 多图标签
  * 分段加载
+ * 下拉刷新
+ * toolbar
  *
  * @author: MurphySL
  * @time: 2017/1/30 19:02

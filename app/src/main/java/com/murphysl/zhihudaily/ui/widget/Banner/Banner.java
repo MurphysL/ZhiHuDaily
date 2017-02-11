@@ -349,7 +349,6 @@ public class Banner extends FrameLayout implements ViewPager.OnPageChangeListene
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        Log.i(TAG, "onPageScrolled: ");
         if (mOnPageChangeListener != null) {
             mOnPageChangeListener.onPageScrolled(position, positionOffset, positionOffsetPixels);
         }
@@ -357,7 +356,6 @@ public class Banner extends FrameLayout implements ViewPager.OnPageChangeListene
 
     @Override
     public void onPageSelected(int position) {
-        Log.i(TAG, "onPageSelected: ");
         if (mOnPageChangeListener != null) {
             mOnPageChangeListener.onPageSelected(position);
         }
@@ -367,13 +365,11 @@ public class Banner extends FrameLayout implements ViewPager.OnPageChangeListene
 
         if (position == 0) position = count;
         if (position > count) position = 1;
-        Log.i(TAG, "onPageSelected: ");
         bannerTitle.setText(titleList.get(position - 1));
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
-        Log.i(TAG, "onPageScrollStateChanged: ");
         if (mOnPageChangeListener != null) {
             mOnPageChangeListener.onPageScrollStateChanged(state);
         }

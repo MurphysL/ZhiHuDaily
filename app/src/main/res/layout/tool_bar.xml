@@ -2,8 +2,8 @@
 <android.support.v7.widget.Toolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/toolbar"
-    android:background="@color/colorLightBlue"
+    android:id="@+id/detail_toolbar"
+    android:background="@color/skin_colorTop"
     android:layout_width="match_parent"
     app:titleTextColor="@color/colorWhite"
     app:navigationIcon="@drawable/back"

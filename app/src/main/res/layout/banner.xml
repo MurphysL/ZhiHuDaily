@@ -24,7 +24,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         tools:text="图片轮播器"
-        tools:textColor="@color/colorLightBlue"/>
+        tools:textColor="@color/skin_colorTop"/>
 
     <LinearLayout
         android:id="@+id/indicator"

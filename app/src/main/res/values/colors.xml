@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorWhite">#FFFFFF</color>
-    <color name="colorGray">#EDEDED</color>
-    <color name="colorLightGray">#E0E0E0</color>
-    <color name="colorLittleGray">#C7C7C7</color>
-    <color name="colorDeepGray">#FF8F8F8F</color>
-    <color name="colorDarkGray">#494949</color>
-    <color name="colorLightBlue">#0099FF</color>
+
+    <color name="colorPrimary">#0099FF</color>
     <color name="colorDayPrimary">#00A2ED</color>
     <color name="colorDayPrimaryDark">#008FD2</color>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#232323</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#EDEDED</color>
+    <color name="colorLittleGray">#C7C7C7</color>
+    <color name="colorLightGray">#E0E0E0</color>
+    <color name="colorDeepGray">#FF8F8F8F</color>
+    <color name="colorDarkGray">#494949</color>
     <color name="colorBlack">#17181A</color>
+
+    <color name="skin_colorTop">@color/colorPrimary</color>
+    <color name="skin_colorText">@color/colorBlack</color>
+    <color name="skin_colorCardView">@color/colorWhite</color>
+    <color name="skin_colorDrawerMenu">@color/colorWhite</color>
+    <color name="skin_colorDrawerMenuHome">@color/colorGray</color>
+    <color name="skin_colorBackground">#F3F3F3</color>
+
+    <color name="skin_colorTop_dark">@color/colorPrimaryDark</color>
+    <color name="skin_colorText_dark">@color/colorWhite</color>
+    <color name="skin_colorCardView_dark">#404040</color>
+    <color name="skin_colorDrawerMenu_dark">#343434</color>
+    <color name="skin_colorDrawerMenuHome_dark">#2b2b2b</color>
+    <color name="skin_colorBackground_dark">#343434</color>
+
 </resources>
