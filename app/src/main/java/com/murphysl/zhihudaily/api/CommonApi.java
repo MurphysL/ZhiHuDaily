@@ -8,7 +8,6 @@ import com.murphysl.zhihudaily.bean.ThemeNewsBean;
 import com.murphysl.zhihudaily.bean.ThemesBean;
 
 import io.reactivex.Observable;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 

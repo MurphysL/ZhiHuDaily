@@ -5,13 +5,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.adapter.base.MultiItemTypeAdapter;
@@ -22,7 +16,7 @@ import com.murphysl.zhihudaily.bean.NewsBean;
 import com.murphysl.zhihudaily.bean.ThemeNewsBean;
 import com.murphysl.zhihudaily.mvpframe.base.MVPFragment;
 import com.murphysl.zhihudaily.ui.widget.Banner.Banner;
-import com.squareup.picasso.Picasso;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +30,6 @@ import java.util.List;
 
 
 public class ThemeFragment extends MVPFragment <ThemeModel , ThemePresenter> implements ThemeContract.View{
-    private static final String TAG = "ThemeFragment";
 
     private RecyclerView recyclerview;
     private SwipeRefreshLayout swipe;
@@ -59,6 +52,16 @@ public class ThemeFragment extends MVPFragment <ThemeModel , ThemePresenter> imp
     protected void initView(View view, Bundle saveInstanceState) {
         recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview);
         swipe = (SwipeRefreshLayout) view.findViewById(R.id.swipe);
+        swipe.setColorSchemeResources(R.color.colorPrimary);
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                newsList.clear();
+                imgs.clear();
+                title.clear();
+                presenter.getThemeNews(themeId);
+            }
+        });
 
         adapter = new MultiItemTypeAdapter(getContext() , newsList);
         adapter.addItemViewDelegate(new ThemeNewsDelegate());
@@ -88,13 +91,15 @@ public class ThemeFragment extends MVPFragment <ThemeModel , ThemePresenter> imp
     @Override
     public void onRequestError(String msg) {
         Snackbar.make(recyclerview , msg.toString() , Snackbar.LENGTH_SHORT).show();
+        Logger.w(msg);
     }
 
     @Override
     public void showThemeNews(ThemeNewsBean themeNewsBean) {
-        if(themeNewsBean != null)
-            Log.i(TAG, "showLatestNews: ");
-        Log.i(TAG, "showLatestNews: " + themeNewsBean.toString());
+        if(themeNewsBean == null)
+            return;
+
+        Logger.i("showLatestNews: " + themeNewsBean.toString());
 
         imgs.add(themeNewsBean.getImage());
         title.add(themeNewsBean.getName());
@@ -102,10 +107,9 @@ public class ThemeFragment extends MVPFragment <ThemeModel , ThemePresenter> imp
 
         newsList.add(themeNewsBean);
 
-        for(int i = 0 ;i < themeNewsBean.getStories().size() ;i ++){
-            Log.i(TAG, "showThemeNews: " + themeNewsBean.getStories().get(i));
+        for(int i = 0 ;i < themeNewsBean.getStories().size() ;i ++)
             newsList.add(themeNewsBean.getStories().get(i));
-        }
+
         wrapper.notifyDataSetChanged();
 
     }

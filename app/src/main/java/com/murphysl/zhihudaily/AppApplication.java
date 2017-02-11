@@ -3,7 +3,6 @@ package com.murphysl.zhihudaily;
 import android.app.Application;
 
 import com.murphysl.zhihudaily.ui.skin.SkinManager;
-import com.murphysl.zhihudaily.util.SharedPreferencesUtils;
 import com.orhanobut.logger.Logger;
 
 /**
@@ -24,7 +23,6 @@ public class AppApplication extends Application {
         SkinManager.getInstance().init(this);
 
         Logger.init(TAG).methodCount(3);
-
 
     }
 }

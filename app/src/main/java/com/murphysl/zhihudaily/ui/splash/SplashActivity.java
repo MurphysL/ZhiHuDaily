@@ -52,8 +52,6 @@ public class SplashActivity extends MVPActivity<SplashModel, SplashPresenter> im
         logo = (ImageView) findViewById(R.id.splash_logo);
         text = (TextView) findViewById(R.id.splash_text);
 
-        Logger.i("logo");
-
         Drawable drawable = logo.getDrawable();
         if(drawable instanceof Animatable)
             ((Animatable) drawable).start();

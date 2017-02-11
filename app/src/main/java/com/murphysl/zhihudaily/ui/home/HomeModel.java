@@ -3,7 +3,6 @@ package com.murphysl.zhihudaily.ui.home;
 import com.murphysl.zhihudaily.api.Network;
 import com.murphysl.zhihudaily.bean.BeforeNewsBean;
 import com.murphysl.zhihudaily.bean.LatestNewsBean;
-import com.murphysl.zhihudaily.mvpframe.base.BaseModel;
 import com.murphysl.zhihudaily.mvpframe.rx.RxSchedulerHelper;
 
 import io.reactivex.Observable;

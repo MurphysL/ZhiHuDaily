@@ -5,9 +5,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
+import com.murphysl.zhihudaily.adapter.listener.LoadMoreListener;
 import com.murphysl.zhihudaily.config.Constants;
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.adapter.base.MultiItemTypeAdapter;
@@ -20,6 +20,7 @@ import com.murphysl.zhihudaily.bean.NewsBean;
 import com.murphysl.zhihudaily.bean.TimeBean;
 import com.murphysl.zhihudaily.mvpframe.base.MVPFragment;
 import com.murphysl.zhihudaily.ui.widget.Banner.Banner;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +29,6 @@ import java.util.List;
 /**
  * HomeFragment
  *
- * 分段加载
- * 下拉刷新
- * toolbar
  *
  * @author: MurphySL
  * @time: 2017/1/30 19:02
@@ -38,7 +36,6 @@ import java.util.List;
 
 
 public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> implements HomeContract.View {
-    private static final String TAG = "HomeFragment";
 
     private RecyclerView recyclerview;
     private SwipeRefreshLayout swipe;
@@ -56,9 +53,9 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
 
     @Override
     public void showLatestNews(LatestNewsBean latestNewsBean) {
-        if(latestNewsBean != null)
-            Log.i(TAG, "showLatestNews: ");
-        Log.i(TAG, "showLatestNews: " + latestNewsBean.toString());
+        if(latestNewsBean == null)
+            return;
+        Logger.i("showLatestNews: " + latestNewsBean.toString());
 
         TimeBean timeBean = new TimeBean();
         timeBean.setTime(date);
@@ -73,9 +70,10 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
             topList.add(latestNewsBean.getTop_stories().get(i));
             img.add(latestNewsBean.getTop_stories().get(i).getImage());
             title.add(latestNewsBean.getTop_stories().get(i).getTitle());
-            Log.i(TAG, "showLatestNews: " + img.get(i) + title.get(i));
         }
         banner.update(img , title);
+
+        swipe.setRefreshing(false);
     }
 
     @Override
@@ -107,12 +105,31 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
         adapter.addItemViewDelegate(new StoriesTimeDelegate());
         wrapper = new HeaderAndFooterWrapper(adapter);
 
+        swipe.setColorSchemeResources(R.color.colorPrimary);
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                newsList.clear();
+                topList.clear();
+                img.clear();
+                title.clear();
+                presenter.getLatestNews();
+            }
+        });
+
         banner = new Banner(getContext());
         banner.isAutoPlay(true);
         banner.setDelayTime(6000);
 
         wrapper.addHeaderView(banner);
-        recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        recyclerview.setLayoutManager(manager);
+        recyclerview.addOnScrollListener(new LoadMoreListener(manager) {
+            @Override
+            public void loadMore(int currentPage) {
+                presenter.getBeforeNews(date);
+            }
+        });
         recyclerview.setAdapter(wrapper);
     }
 
@@ -123,11 +140,12 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
 
     @Override
     public void onRequestEnd() {
-        //presenter.getBeforeNews(date);
+
     }
 
     @Override
     public void onRequestError(String msg) {
         Snackbar.make(getView() , msg , Snackbar.LENGTH_SHORT).show();
+        Logger.w(msg);
     }
 }

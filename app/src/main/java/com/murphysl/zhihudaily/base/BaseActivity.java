@@ -171,11 +171,6 @@ public abstract class BaseActivity extends AppCompatActivity implements SkinChan
     }
 
     @Override
-    public void OnSkinChange() {
-
-    }
-
-    @Override
     public void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         if(getIntent() != null){
@@ -240,8 +235,13 @@ public abstract class BaseActivity extends AppCompatActivity implements SkinChan
                     System.exit(0);
                 }
                 return true;
+            }else{
+                popFragment();
             }
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    @Override
+    public void OnSkinChange() { }
 }

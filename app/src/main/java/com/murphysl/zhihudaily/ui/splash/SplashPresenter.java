@@ -2,8 +2,6 @@ package com.murphysl.zhihudaily.ui.splash;
 
 import com.murphysl.zhihudaily.bean.SplashImgBean;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 

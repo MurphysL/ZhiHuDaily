@@ -2,7 +2,6 @@ package com.murphysl.zhihudaily.ui.home;
 
 import com.murphysl.zhihudaily.bean.BeforeNewsBean;
 import com.murphysl.zhihudaily.bean.LatestNewsBean;
-import com.murphysl.zhihudaily.bean.ThemeNewsBean;
 import com.murphysl.zhihudaily.mvpframe.base.BaseModel;
 import com.murphysl.zhihudaily.mvpframe.base.BasePresenter;
 import com.murphysl.zhihudaily.mvpframe.base.BaseView;

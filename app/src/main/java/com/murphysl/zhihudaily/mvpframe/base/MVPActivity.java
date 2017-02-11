@@ -48,4 +48,5 @@ public abstract class MVPActivity<M extends BaseModel , P extends BasePresenter>
 
     @Override
     public abstract void onRequestError(String msg) ;
+
 }

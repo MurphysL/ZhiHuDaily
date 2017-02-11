@@ -3,7 +3,6 @@ package com.murphysl.zhihudaily.ui.detail;
 import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.webkit.WebView;
@@ -31,13 +30,11 @@ import com.squareup.picasso.Picasso;
 
 public class DetailActivity extends MVPActivity<DetailModel, DetailPresenter> implements DetailContract.View {
 
-    Toolbar toolbar;
-    WebView webview;
-    ImageView img;
-    //TextView titleDetail;
-    TextView sourceDetail;
-    CollapsingToolbarLayout collapsingToolbarLayout;
-    ActionBar actionBar;
+    private Toolbar toolbar;
+    private WebView webview;
+    private ImageView img;
+    private TextView sourceDetail;
+    private CollapsingToolbarLayout collapsingToolbarLayout;
 
     private int newsId = -1;
 
@@ -47,12 +44,10 @@ public class DetailActivity extends MVPActivity<DetailModel, DetailPresenter> im
         setSupportActionBar(toolbar);
         webview = (WebView) findViewById(R.id.webview);
         img = (ImageView) findViewById(R.id.img_detail);
-        //titleDetail = (TextView) findViewById(R.id.title_detail);
         sourceDetail = (TextView) findViewById(R.id.source_detail);
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbarlayout);
         collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.colorWhite));
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.colorWhite));
-
     }
 
     @Override
@@ -78,7 +73,7 @@ public class DetailActivity extends MVPActivity<DetailModel, DetailPresenter> im
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_detail_md;
+        return R.layout.activity_detail;
     }
 
     @Override
@@ -89,6 +84,7 @@ public class DetailActivity extends MVPActivity<DetailModel, DetailPresenter> im
     @Override
     public void onRequestError(String msg) {
         Snackbar.make(img , msg , Snackbar.LENGTH_SHORT).show();
+        Logger.w(msg);
     }
 
     @Override
@@ -99,7 +95,6 @@ public class DetailActivity extends MVPActivity<DetailModel, DetailPresenter> im
                 .load(detailBean.getImage())
                 .fit()
                 .into(img);
-        //titleDetail.setText(detailBean.getTitle());
         collapsingToolbarLayout.setTitle(detailBean.getTitle());
 
         sourceDetail.setText(detailBean.getImage_source());
