@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.orhanobut.logger.Logger;
+
 /**
  * BaseFragment
  *
@@ -39,6 +41,7 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Logger.i("onCreateView");
         View root = inflater.inflate(getLayoutId() , container , false);
         initView(root , savedInstanceState);
         initData();

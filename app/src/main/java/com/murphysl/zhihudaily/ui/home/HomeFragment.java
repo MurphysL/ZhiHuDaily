@@ -18,7 +18,7 @@ import com.murphysl.zhihudaily.bean.BeforeNewsBean;
 import com.murphysl.zhihudaily.bean.LatestNewsBean;
 import com.murphysl.zhihudaily.bean.NewsBean;
 import com.murphysl.zhihudaily.bean.TimeBean;
-import com.murphysl.zhihudaily.mvpframe.base.MVPFragment;
+import com.murphysl.zhihudaily.mvpframe.base.BaseMVPFragment;
 import com.murphysl.zhihudaily.ui.widget.Banner.Banner;
 import com.orhanobut.logger.Logger;
 
@@ -29,13 +29,14 @@ import java.util.List;
 /**
  * HomeFragment
  *
+ * popThemeFragment 导致内容重复：目前先清空list，待改进
  *
  * @author: MurphySL
  * @time: 2017/1/30 19:02
  */
 
 
-public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> implements HomeContract.View {
+public class HomeFragment extends BaseMVPFragment<HomeModel , HomePresenter> implements HomeContract.View {
 
     private RecyclerView recyclerview;
     private SwipeRefreshLayout swipe;
@@ -57,6 +58,11 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
             return;
         Logger.i("showLatestNews: " + latestNewsBean.toString());
 
+        newsList.clear();
+        title.clear();
+        img.clear();
+        topList.clear();
+        
         TimeBean timeBean = new TimeBean();
         timeBean.setTime(date);
         newsList.add(timeBean);
@@ -65,6 +71,7 @@ public class HomeFragment extends MVPFragment<HomeModel , HomePresenter> impleme
             newsList.add(latestNewsBean.getStories().get(i));
         }
         wrapper.notifyDataSetChanged();
+
 
         for (int i = 0 ;i < latestNewsBean.getTop_stories().size() ;i ++){
             topList.add(latestNewsBean.getTop_stories().get(i));

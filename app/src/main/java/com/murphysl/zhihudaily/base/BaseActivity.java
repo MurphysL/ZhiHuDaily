@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.util.ArrayMap;
 import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v4.view.LayoutInflaterFactory;
@@ -102,7 +103,6 @@ public abstract class BaseActivity extends AppCompatActivity implements SkinChan
     }
 
     private void injectSkin(View view, List<SkinAttr> skinAttrs) {
-        Logger.i("injectSkin");
         List<SkinView> skinViews = SkinManager.getInstance().getSkinViews(this);
         if(skinViews == null){
             skinViews = new ArrayList<>();
@@ -206,6 +206,14 @@ public abstract class BaseActivity extends AppCompatActivity implements SkinChan
 
     protected BaseFragment getFirstFragment(){ return null;}
 
+    protected Fragment getCurrentFragment(){
+        return getSupportFragmentManager().getFragments().get(getFragmentNum() - 1);
+    }
+
+    private int getFragmentNum(){
+        return getSupportFragmentManager().getBackStackEntryCount();
+    }
+
     protected void addFragment(BaseFragment fragment){
         if(fragment != null){
             getSupportFragmentManager().beginTransaction()
@@ -216,7 +224,7 @@ public abstract class BaseActivity extends AppCompatActivity implements SkinChan
     }
 
     protected void popFragment(){
-        if(getSupportFragmentManager().getBackStackEntryCount() > 1){
+        if(getFragmentNum() > 1){
             getSupportFragmentManager().popBackStack();
         }else{
             finish();
@@ -226,7 +234,7 @@ public abstract class BaseActivity extends AppCompatActivity implements SkinChan
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(KeyEvent.KEYCODE_BACK == keyCode){
-            if(getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            if(getFragmentNum() == 1) {
                 if(System.currentTimeMillis() - exitTime > 2000){
                     Snackbar.make(getRootView() , "再按一次退出程序" , Snackbar.LENGTH_SHORT).show();
                     exitTime = System.currentTimeMillis();
@@ -235,8 +243,6 @@ public abstract class BaseActivity extends AppCompatActivity implements SkinChan
                     System.exit(0);
                 }
                 return true;
-            }else{
-                popFragment();
             }
         }
         return super.onKeyDown(keyCode, event);

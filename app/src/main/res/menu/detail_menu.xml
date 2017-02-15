@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        app:showAsAction="always"
+        android:icon="@drawable/share"
+        android:id="@+id/share"
+        android:title="@string/share"></item>
+
+    <item
+        app:showAsAction="always"
+        android:icon="@drawable/star"
+        android:id="@+id/star"
+        android:title="@string/star"></item>
+
+    <item
+        app:showAsAction="always"
+        android:icon="@drawable/comment"
+        android:id="@+id/comment"
+        android:title="@string/comment"></item>
+
+    <item
+        app:showAsAction="always"
+        android:icon="@drawable/like"
+        android:id="@+id/like"
+        android:title="@string/like"></item>
+</menu>

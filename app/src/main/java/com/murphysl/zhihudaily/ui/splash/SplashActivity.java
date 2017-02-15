@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.bean.SplashImgBean;
-import com.murphysl.zhihudaily.mvpframe.base.MVPActivity;
+import com.murphysl.zhihudaily.mvpframe.base.BaseMVPActivity;
 import com.murphysl.zhihudaily.mvpframe.rx.RxSchedulerHelper;
 import com.murphysl.zhihudaily.ui.main.MainActivity;
 import com.orhanobut.logger.Logger;
@@ -30,7 +30,7 @@ import io.reactivex.disposables.Disposable;
  */
 
 
-public class SplashActivity extends MVPActivity<SplashModel, SplashPresenter> implements SplashContract.View {
+public class SplashActivity extends BaseMVPActivity<SplashModel, SplashPresenter> implements SplashContract.View {
 
     private ImageView img;
     private ImageView logo;

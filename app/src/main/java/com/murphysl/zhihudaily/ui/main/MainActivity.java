@@ -19,7 +19,7 @@ import com.murphysl.zhihudaily.adapter.wrapper.HeaderAndFooterWrapper;
 import com.murphysl.zhihudaily.base.BaseFragment;
 import com.murphysl.zhihudaily.bean.ThemesBean;
 import com.murphysl.zhihudaily.config.Constants;
-import com.murphysl.zhihudaily.mvpframe.base.MVPActivity;
+import com.murphysl.zhihudaily.mvpframe.base.BaseMVPActivity;
 import com.murphysl.zhihudaily.ui.home.HomeFragment;
 import com.murphysl.zhihudaily.ui.skin.SkinManager;
 import com.murphysl.zhihudaily.ui.theme.ThemeFragment;
@@ -33,7 +33,7 @@ import java.util.List;
  * 1.消息
  * 2.设置
  */
-public class MainActivity extends MVPActivity<MainModel , MainPresenter> implements MainContract.View{
+public class MainActivity extends BaseMVPActivity<MainModel , MainPresenter> implements MainContract.View{
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
@@ -64,6 +64,16 @@ public class MainActivity extends MVPActivity<MainModel , MainPresenter> impleme
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT ,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         head.setLayoutParams(layoutParams);
+        RelativeLayout headMain = (RelativeLayout) head.findViewById(R.id.header_home);
+        headMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(! (getCurrentFragment() instanceof HomeFragment))
+                    popFragment();
+
+                drawer.closeDrawers();
+            }
+        });
         wrapper.addHeaderView(head);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {

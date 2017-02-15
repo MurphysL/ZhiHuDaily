@@ -14,7 +14,7 @@ import com.murphysl.zhihudaily.adapter.delegate.ThemeNewsDelegate;
 import com.murphysl.zhihudaily.adapter.wrapper.HeaderAndFooterWrapper;
 import com.murphysl.zhihudaily.bean.NewsBean;
 import com.murphysl.zhihudaily.bean.ThemeNewsBean;
-import com.murphysl.zhihudaily.mvpframe.base.MVPFragment;
+import com.murphysl.zhihudaily.mvpframe.base.BaseMVPFragment;
 import com.murphysl.zhihudaily.ui.widget.Banner.Banner;
 import com.orhanobut.logger.Logger;
 
@@ -29,7 +29,7 @@ import java.util.List;
  */
 
 
-public class ThemeFragment extends MVPFragment <ThemeModel , ThemePresenter> implements ThemeContract.View{
+public class ThemeFragment extends BaseMVPFragment<ThemeModel , ThemePresenter> implements ThemeContract.View{
 
     private RecyclerView recyclerview;
     private SwipeRefreshLayout swipe;

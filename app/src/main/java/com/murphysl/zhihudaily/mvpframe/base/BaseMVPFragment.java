@@ -2,25 +2,26 @@ package com.murphysl.zhihudaily.mvpframe.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
-import com.murphysl.zhihudaily.base.BaseActivity;
+import com.murphysl.zhihudaily.base.BaseFragment;
 import com.murphysl.zhihudaily.mvpframe.util.TUtil;
 
 /**
- * MVPActivity
+ * BaseMVPFragment
  *
  * @author: MurphySL
- * @time: 2017/1/30 16:28
+ * @time: 2017/1/30 16:29
  */
 
 
-public abstract class MVPActivity<M extends BaseModel , P extends BasePresenter> extends BaseActivity implements BaseView{
+public abstract class BaseMVPFragment<M extends BaseModel , P extends BasePresenter> extends BaseFragment implements BaseView{
 
     protected M model;
     protected P presenter;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = TUtil.getT(this, 1);
         model = TUtil.getT(this, 0);
@@ -36,17 +37,17 @@ public abstract class MVPActivity<M extends BaseModel , P extends BasePresenter>
     }
 
     @Override
-    protected void initData() {
-
-    }
+    protected abstract void initData();
 
     @Override
-    protected abstract void initView();
+    protected abstract void initView(View view, Bundle saveInstanceState);
+
+    @Override
+    protected abstract int getLayoutId();
 
     @Override
     public abstract void onRequestEnd();
 
     @Override
-    public abstract void onRequestError(String msg) ;
-
+    public abstract void onRequestError(String msg);
 }

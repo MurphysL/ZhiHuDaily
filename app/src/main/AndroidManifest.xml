@@ -25,6 +25,8 @@
             android:theme="@style/DetailActivityTheme"
             android:name=".ui.detail.DetailActivity"/>
 
+        <activity android:name=".ui.comment.CommentActivity"/>
+
     </application>
 
 </manifest>

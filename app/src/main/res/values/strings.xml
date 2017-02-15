@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ZhiHuDaily</string>
 
-    <string name="toolbar_title_main">"首页"</string>
+    <string name="toolbar_title_main">首页</string>
 
     <string name="drawer_star">我的收藏</string>
     <string name="drawer_download">离线下载</string>
@@ -9,6 +9,13 @@
     <string name="msg">消息</string>
     <string name="switch_model">夜间模式</string>
     <string name="config">设置选项</string>
+    <string name="share">分享</string>
+    <string name="star">收藏</string>
+    <string name="comment">点评</string>
+    <string name="like">赞</string>
 
     <string name="editor">主编</string>
+
+    <string name="long_comment_num_hint">\u0020条长评</string>
+    <string name="short_comment_num_hint">\u0020条短评</string>
 </resources>

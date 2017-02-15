@@ -14,7 +14,6 @@ import io.reactivex.functions.Consumer;
 
 
 public class MainPresenter extends MainContract.Presenter {
-    private static final String TAG = "MainActivity";
 
     @Override
     void getThemes() {

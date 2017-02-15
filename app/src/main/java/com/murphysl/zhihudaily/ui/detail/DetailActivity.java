@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.ImageView;
@@ -12,7 +13,8 @@ import android.widget.TextView;
 import com.murphysl.zhihudaily.config.Constants;
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.bean.DetailNews;
-import com.murphysl.zhihudaily.mvpframe.base.MVPActivity;
+import com.murphysl.zhihudaily.mvpframe.base.BaseMVPActivity;
+import com.murphysl.zhihudaily.ui.comment.CommentActivity;
 import com.murphysl.zhihudaily.util.HtmlUtils;
 import com.orhanobut.logger.Logger;
 import com.squareup.picasso.Picasso;
@@ -28,7 +30,7 @@ import com.squareup.picasso.Picasso;
  */
 
 
-public class DetailActivity extends MVPActivity<DetailModel, DetailPresenter> implements DetailContract.View {
+public class DetailActivity extends BaseMVPActivity<DetailModel, DetailPresenter> implements DetailContract.View {
 
     private Toolbar toolbar;
     private WebView webview;
@@ -51,11 +53,19 @@ public class DetailActivity extends MVPActivity<DetailModel, DetailPresenter> im
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.detail_menu , menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
                 finish();
                 break;
+            case R.id.comment:
+                startActivity(new Intent(DetailActivity.this , CommentActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

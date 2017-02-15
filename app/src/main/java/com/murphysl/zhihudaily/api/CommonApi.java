@@ -3,6 +3,8 @@ package com.murphysl.zhihudaily.api;
 import com.murphysl.zhihudaily.bean.BeforeNewsBean;
 import com.murphysl.zhihudaily.bean.DetailNews;
 import com.murphysl.zhihudaily.bean.LatestNewsBean;
+import com.murphysl.zhihudaily.bean.LongCommentsBean;
+import com.murphysl.zhihudaily.bean.ShortCommentsBean;
 import com.murphysl.zhihudaily.bean.SplashImgBean;
 import com.murphysl.zhihudaily.bean.ThemeNewsBean;
 import com.murphysl.zhihudaily.bean.ThemesBean;
@@ -37,7 +39,13 @@ public interface CommonApi {
     Observable<ThemesBean> getThemesBean();
 
     @GET("theme/{theme}")
-    Observable<ThemeNewsBean> getThemeNewsBean(@Path("theme") int id);
+    Observable<ThemeNewsBean> getThemeNewsBean(@Path("theme") int theme);
+
+    @GET("story/{id}/long-comments")
+    Observable<LongCommentsBean> getLongCommentsBean(@Path("id") int id);
+
+    @GET("story/{id}/short-comments")
+    Observable<ShortCommentsBean> getShortCommentsBean(@Path("id") int id);
 
 
 }
