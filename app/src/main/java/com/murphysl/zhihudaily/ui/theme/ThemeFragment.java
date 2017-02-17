@@ -6,6 +6,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.adapter.base.MultiItemTypeAdapter;
@@ -15,7 +17,7 @@ import com.murphysl.zhihudaily.adapter.wrapper.HeaderAndFooterWrapper;
 import com.murphysl.zhihudaily.bean.NewsBean;
 import com.murphysl.zhihudaily.bean.ThemeNewsBean;
 import com.murphysl.zhihudaily.mvpframe.base.BaseMVPFragment;
-import com.murphysl.zhihudaily.ui.widget.Banner.Banner;
+import com.murphysl.zhihudaily.ui.widget.Banner;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
@@ -69,8 +71,9 @@ public class ThemeFragment extends BaseMVPFragment<ThemeModel , ThemePresenter> 
         wrapper = new HeaderAndFooterWrapper(adapter);
 
         banner = new Banner(getContext());
-        banner.isAutoPlay(true);
-        banner.setDelayTime(4000);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , 650);
+        banner.setLayoutParams(params);
+
 
         wrapper.addHeaderView(banner);
 
@@ -90,7 +93,7 @@ public class ThemeFragment extends BaseMVPFragment<ThemeModel , ThemePresenter> 
 
     @Override
     public void onRequestError(String msg) {
-        Snackbar.make(recyclerview , msg.toString() , Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(recyclerview , msg , Snackbar.LENGTH_SHORT).show();
         Logger.w(msg);
     }
 
@@ -103,6 +106,7 @@ public class ThemeFragment extends BaseMVPFragment<ThemeModel , ThemePresenter> 
 
         imgs.add(themeNewsBean.getImage());
         title.add(themeNewsBean.getName());
+
         banner.update(imgs , title);
 
         newsList.add(themeNewsBean);

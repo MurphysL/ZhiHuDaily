@@ -11,11 +11,13 @@ import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v4.view.LayoutInflaterFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
+import android.transition.Explode;
 import android.util.AttributeSet;
 import android.view.InflateException;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 
 import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.ui.skin.SkinAttr;
@@ -97,6 +99,13 @@ public abstract class BaseActivity extends AppCompatActivity implements SkinChan
             }
         });
         super.onCreate(savedInstanceState);
+
+        // 允许使用transitions
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        // 共享元素transition的进入效果
+        getWindow().setSharedElementEnterTransition(new Explode());
+        // 共享元素transition的退出效果
+        getWindow().setSharedElementExitTransition(new Explode());
 
         setContentView(getContentViewId());
         initView();

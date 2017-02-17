@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +26,10 @@ import com.squareup.picasso.Picasso;
  * DetailActivity
  *
  * js
+ * 标题缩写
+ * 赞与评论数
+ * 模式切换html字体颜色---正则
+ * 共享元素失效
  *
  * @author: MurphySL
  * @time: 2017/1/30 20:06
@@ -39,6 +45,7 @@ public class DetailActivity extends BaseMVPActivity<DetailModel, DetailPresenter
     private CollapsingToolbarLayout collapsingToolbarLayout;
 
     private int newsId = -1;
+    private String imgUrl ;
 
     @Override
     protected void initView() {
@@ -50,6 +57,7 @@ public class DetailActivity extends BaseMVPActivity<DetailModel, DetailPresenter
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbarlayout);
         collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.colorWhite));
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.colorWhite));
+
     }
 
     @Override
@@ -65,14 +73,16 @@ public class DetailActivity extends BaseMVPActivity<DetailModel, DetailPresenter
                 finish();
                 break;
             case R.id.comment:
-                startActivity(new Intent(DetailActivity.this , CommentActivity.class));
+                Intent intent = new Intent(this , CommentActivity.class);
+                intent.putExtra(Constants.NEWS_ID_COMMENTS, newsId);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void handleIntent(Intent intent) {
-        newsId = intent.getIntExtra(Constants.newsId, 0);
+        newsId = intent.getIntExtra(Constants.NEWS_ID, 0);
     }
 
     @Override

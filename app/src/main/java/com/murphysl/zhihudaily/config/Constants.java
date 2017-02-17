@@ -10,9 +10,12 @@ package com.murphysl.zhihudaily.config;
 
 public class Constants {
 
-    public static final String baseUrl = "http://news-at.zhihu.com/api/4/";
-    public static final String newsId = "NEWS_ID";
-    public static final String latestTime = "今日热闻";
+    public static final String BASE_URL = "http://news-at.zhihu.com/api/4/";
+    public static final String NEWS_ID = "NEWS_ID";
+    public static final String NEWS_ID_COMMENTS = "Comments";
+    public static final String IMG_URL = "img_url";
+
+    public static final String LATEST_TIME = "今日热闻";
 
     public static final String SHARED_NAME = "ZhihuDaily";
     public static final String SKIN_HEAD = "skin_";

@@ -13,6 +13,7 @@
     <color name="colorDeepGray">#FF8F8F8F</color>
     <color name="colorDarkGray">#494949</color>
     <color name="colorBlack">#17181A</color>
+    <color name="colorFilter">#edf2d2</color>
 
     <color name="skin_colorTop">@color/colorPrimary</color>
     <color name="skin_colorText">@color/colorBlack</color>

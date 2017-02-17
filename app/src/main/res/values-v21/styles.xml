@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="DetailActivityTheme" parent="AppTheme">
+        <!--共享元素-->
+        <item name="android:windowContentTransitions">true</item>
+
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 </resources>

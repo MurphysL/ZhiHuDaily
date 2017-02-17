@@ -37,6 +37,7 @@
             android:layout_width="80dp"
             android:layout_height="match_parent">
             <ImageView
+                android:transitionName="transitionImg"
                 android:src="@mipmap/ic_launcher"
                 android:scaleType="fitXY"
                 android:id="@+id/img_main"

@@ -36,6 +36,7 @@
             </android.support.v7.widget.CardView>
 
             <RelativeLayout
+                android:id="@+id/long_comment_empty"
                 android:background="@color/skin_colorBackground"
                 android:layout_width="match_parent"
                 android:layout_height="490dp">
@@ -56,11 +57,12 @@
             </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/long_comment"
+                android:id="@+id/long_comments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/short_comment_head"
                 android:background="@color/skin_colorCardView"
                 android:layout_width="match_parent"
                 android:layout_height="40dp">
@@ -89,6 +91,8 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.RecyclerView
+                android:visibility="gone"
+                android:id="@+id/short_comments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

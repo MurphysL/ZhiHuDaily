@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
+                    android:transitionName="transitionImg"
                     android:fitsSystemWindows="true"
                     android:background="@color/skin_colorTop"
                     android:id="@+id/img_detail"

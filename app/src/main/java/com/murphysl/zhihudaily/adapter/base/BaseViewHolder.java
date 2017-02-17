@@ -7,6 +7,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextPaint;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -116,6 +117,13 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
     {
         TextView view = getView(viewId);
         view.setTextColor(textColor);
+        return this;
+    }
+
+    public BaseViewHolder setTextBold(int viewId , boolean bold){
+        TextView view = getView(viewId);
+        TextPaint paint = view.getPaint();
+        paint.setFakeBoldText(true);
         return this;
     }
 

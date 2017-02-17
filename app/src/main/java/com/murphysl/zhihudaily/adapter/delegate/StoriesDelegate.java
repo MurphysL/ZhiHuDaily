@@ -45,7 +45,7 @@ public class StoriesDelegate implements ItemViewDelegate<NewsBean> {
             public void onClick(View v) {
                 Context context = viewHolder.getItemView().getContext();
                 Intent intent = new Intent(context , DetailActivity.class);
-                intent.putExtra(Constants.newsId , ((StoriesBean)storiesBean).getId());
+                intent.putExtra(Constants.NEWS_ID, ((StoriesBean)storiesBean).getId());
                 context.startActivity(intent);
             }
         });

@@ -32,7 +32,7 @@ public abstract class LoadMoreListener extends RecyclerView.OnScrollListener {
         firstVisibleItem  = linearLayoutManager.findFirstVisibleItemPosition();
         lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
 
-        if(!loading && visibleItemCount + firstVisibleItem > totalItemCount-3){
+        if(!loading && visibleItemCount + firstVisibleItem >= totalItemCount-3){
             currentPage ++;
             loadMore(currentPage);
         }else{

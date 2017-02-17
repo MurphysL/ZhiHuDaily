@@ -30,6 +30,7 @@ public class CommentsDelegate implements ItemViewDelegate<CommentsBean> {
     public void convert(BaseViewHolder viewHolder, CommentsBean commentsBean, int position) {
         viewHolder.setImageUrl(R.id.comment_avatar, commentsBean.getAvatar());
         viewHolder.setText(R.id.comment_author, commentsBean.getAuthor());
+        viewHolder.setTextBold(R.id.comment_author , true);
         viewHolder.setText(R.id.comment_like, commentsBean.getLikes() + "");
         viewHolder.setText(R.id.comment_content, commentsBean.getContent());
         viewHolder.setText(R.id.comment_time , commentsBean.getTime());

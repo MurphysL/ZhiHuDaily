@@ -94,7 +94,6 @@ public class CommentsBean {
                 ", content='" + content + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", time=" + time +
-                ", reply_to=" + reply_to.toString() +
                 ", id=" + id +
                 ", likes=" + likes +
                 '}';

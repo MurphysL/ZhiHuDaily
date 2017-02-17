@@ -22,7 +22,7 @@
 
     <item
         app:showAsAction="always"
-        android:icon="@drawable/like"
+        android:icon="@drawable/like_detail"
         android:id="@+id/like"
         android:title="@string/like"></item>
 </menu>

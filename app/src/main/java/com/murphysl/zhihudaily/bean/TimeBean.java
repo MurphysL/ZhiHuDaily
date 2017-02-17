@@ -34,7 +34,7 @@ public class TimeBean implements NewsBean {
         if (time == null)
             return null;
 
-        if(time.equals(Constants.latestTime))
+        if(time.equals(Constants.LATEST_TIME))
             return time;
 
         try {

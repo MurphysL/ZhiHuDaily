@@ -1,60 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<android.support.v7.widget.CardView
+    android:layout_marginBottom="1dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/skin_colorCardView"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:padding="10dp"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/comment_avatar"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/comment_avatar"
+                android:src="@mipmap/ic_avatar"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:text="刘看山"
+                android:textSize="18sp"
+                android:textColor="@color/skin_colorText"
+                android:id="@+id/comment_author"
+                android:layout_marginLeft="10dp"
+                android:layout_toEndOf="@+id/comment_avatar"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/comment_like"
+                android:src="@drawable/like_comment"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+
+            <TextView
+                android:text="0"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/comment_like"
+                android:textColor="@color/colorDeepGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:paddingLeft="50dp"
+            android:paddingRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="16sp"
+                android:text="dsfhsdkhfsdkjhfdkfhdkshfdsfhdsjhfdsjfkhdfjdjfdsjkfhdjshfjsdfkjdsjhfjdsfhdjkfhjdshfjkdsfhjkd"
+                android:id="@+id/comment_content"
+                android:textColor="@color/skin_colorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </ScrollView>
 
         <TextView
-            android:id="@+id/comment_author"
-            android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/comment_avatar"
-            android:layout_centerVertical="true"
+            android:text="02-15 23:15"
+            android:id="@+id/comment_time"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/colorDeepGray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <ImageView
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/comment_like"
-            android:src="@drawable/like"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-        <TextView
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:id="@+id/comment_like"
-            android:textColor="@color/skin_colorText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
 
-    <ScrollView
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/comment_content"
-            android:textColor="@color/skin_colorText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </ScrollView>
-
-    <TextView
-        android:id="@+id/comment_time"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/skin_colorText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-</LinearLayout>
+</android.support.v7.widget.CardView>

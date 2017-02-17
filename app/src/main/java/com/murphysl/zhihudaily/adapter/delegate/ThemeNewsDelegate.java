@@ -1,5 +1,7 @@
 package com.murphysl.zhihudaily.adapter.delegate;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -48,8 +50,9 @@ public class ThemeNewsDelegate implements ItemViewDelegate<NewsBean> {
             public void onClick(View v) {
                 Context context = viewHolder.getItemView().getContext();
                 Intent intent = new Intent(context , DetailActivity.class);
-                intent.putExtra(Constants.newsId , ((StoriesBean)newsBean).getId());
-                context.startActivity(intent);
+                intent.putExtra(Constants.NEWS_ID, ((StoriesBean)newsBean).getId());
+                context.startActivity(intent ,
+                        ActivityOptions.makeSceneTransitionAnimation((Activity)context ,viewHolder.getView(R.id.img) ,  "transitionImg").toBundle());
             }
         });
     }
