@@ -1,5 +1,6 @@
 package com.murphysl.zhihudaily.ui.theme;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,7 +17,9 @@ import com.murphysl.zhihudaily.adapter.delegate.ThemeNewsDelegate;
 import com.murphysl.zhihudaily.adapter.wrapper.HeaderAndFooterWrapper;
 import com.murphysl.zhihudaily.bean.NewsBean;
 import com.murphysl.zhihudaily.bean.ThemeNewsBean;
+import com.murphysl.zhihudaily.config.Constants;
 import com.murphysl.zhihudaily.mvpframe.base.BaseMVPFragment;
+import com.murphysl.zhihudaily.ui.detail.DetailActivity;
 import com.murphysl.zhihudaily.ui.widget.Banner;
 import com.orhanobut.logger.Logger;
 
@@ -73,7 +76,6 @@ public class ThemeFragment extends BaseMVPFragment<ThemeModel , ThemePresenter> 
         banner = new Banner(getContext());
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , 650);
         banner.setLayoutParams(params);
-
 
         wrapper.addHeaderView(banner);
 

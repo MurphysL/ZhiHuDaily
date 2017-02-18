@@ -160,6 +160,7 @@ public class MainActivity extends BaseMVPActivity<MainModel , MainPresenter> imp
         Logger.w("onRequestError: " + msg);
     }
 
+
     @Override
     public void showThemes(ThemesBean themesBean) {
         if(themesBean == null)

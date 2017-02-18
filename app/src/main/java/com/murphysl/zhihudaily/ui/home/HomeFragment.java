@@ -1,5 +1,6 @@
 package com.murphysl.zhihudaily.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -22,6 +23,7 @@ import com.murphysl.zhihudaily.bean.NewsBean;
 import com.murphysl.zhihudaily.bean.TimeBean;
 import com.murphysl.zhihudaily.mvpframe.base.BaseMVPFragment;
 
+import com.murphysl.zhihudaily.ui.detail.DetailActivity;
 import com.murphysl.zhihudaily.ui.widget.Banner;
 import com.orhanobut.logger.Logger;
 
@@ -33,7 +35,6 @@ import java.util.List;
  * HomeFragment
  *
  * popThemeFragment 导致内容重复：目前先清空list，待改进
- * Bannner点击跳转
  * 多次刷新导致无法加载以前新闻
  *
  * @author: MurphySL
@@ -136,6 +137,16 @@ public class HomeFragment extends BaseMVPFragment<HomeModel , HomePresenter> imp
         banner = new Banner(getContext());
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , 650);
         banner.setLayoutParams(params);
+        banner.setOnBannerClickListenr(new Banner.OnBannerClickListenr() {
+            @Override
+            public void onClick(int i) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity() , DetailActivity.class);
+                int id = topList.get(i).getId();
+                intent.putExtra(Constants.NEWS_ID , id);
+                startActivity(intent);
+            }
+        });
 
         wrapper.addHeaderView(banner);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());

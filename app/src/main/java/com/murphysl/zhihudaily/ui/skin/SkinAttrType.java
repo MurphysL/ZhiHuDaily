@@ -21,8 +21,6 @@ public enum SkinAttrType {
     BACKGROUND("background") {
         @Override
         void apply(View view, String resName) {
-            Logger.i("View" + view);
-            Logger.i("SkinAttrType" + resName);
             Drawable drawable = getResourcesManager().getDrawableByResName(resName);
             if(drawable != null)
                 view.setBackground(drawable);

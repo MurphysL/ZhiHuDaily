@@ -16,7 +16,6 @@ import android.widget.TextView
 import com.murphysl.zhihudaily.R
 import com.orhanobut.logger.Logger
 import com.squareup.picasso.Picasso
-import com.squareup.picasso.Transformation
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -34,6 +33,7 @@ import java.util.concurrent.TimeUnit
  * 颜色转换问题
  * 单个图片无需指示器
  * 属性 ： 颜色过滤器
+ * 一个图片
  *
  * @author: MurphySL
  * @time: 2017/2/14 15:51
@@ -73,6 +73,16 @@ class Banner : RelativeLayout {
     private var indicators : MutableList<ImageView> = ArrayList()
 
     private var currentPage : Int = 1
+
+    interface OnBannerClickListenr{
+        fun onClick(i : Int)
+    }
+
+    private var onBannerClickListener : OnBannerClickListenr? = null
+
+    fun setOnBannerClickListenr(onBannerClickListener : OnBannerClickListenr){
+        this.onBannerClickListener = onBannerClickListener
+    }
 
     constructor(context : Context) : this(context , null)
 
@@ -123,9 +133,24 @@ class Banner : RelativeLayout {
                     .fit()
                     .into(imageView)
             pics.add(imageView)
+
+            imageView.setOnClickListener {
+                onBannerClickListener?.onClick(getRealPos(i))
+            }
         }
 
         initIndicator()
+    }
+
+    private fun getRealPos(i : Int) : Int {
+        var realPos = 1
+        if(i == 0)
+            realPos = imgs.size - 2
+        else if(i == imgs.size - 1)
+            realPos = 1
+        else
+            realPos = i
+        return realPos
     }
 
     private fun init(){
@@ -218,8 +243,9 @@ class Banner : RelativeLayout {
         this.imgs.add(imgs[0])
 
         init()
+
+        textView.text = this.titles[currentPage]
         Logger.i("start")
-        textView.text = titles[currentPage]
         initImageViews()
         initViewPager()
         if(autoPlay)
@@ -286,13 +312,7 @@ class Banner : RelativeLayout {
             }
 
             override fun onPageSelected(position: Int) {
-                if(position == 0){
-                    currentPage = getImgsNum() - 2
-                }else if(position == imgs.size -1){
-                    currentPage = 1
-                }else{
-                    currentPage = position
-                }
+                currentPage = getRealPos(position)
             }
         })
 

@@ -14,6 +14,7 @@ import com.murphysl.zhihudaily.adapter.base.ItemViewDelegate;
 import com.murphysl.zhihudaily.bean.NewsBean;
 import com.murphysl.zhihudaily.bean.StoriesBean;
 import com.murphysl.zhihudaily.ui.detail.DetailActivity;
+import com.orhanobut.logger.Logger;
 
 /**
  * ThemeNewsDelegate
@@ -48,6 +49,7 @@ public class ThemeNewsDelegate implements ItemViewDelegate<NewsBean> {
         viewHolder.getItemView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Logger.i("viewHolder" + ((StoriesBean)newsBean).getId());
                 Context context = viewHolder.getItemView().getContext();
                 Intent intent = new Intent(context , DetailActivity.class);
                 intent.putExtra(Constants.NEWS_ID, ((StoriesBean)newsBean).getId());
