@@ -17,7 +17,7 @@ public class SharedPreferencesUtils {
 
     private Context context;
 
-    public SharedPreferencesUtils (Context context){
+    public SharedPreferencesUtils(Context context) {
         this.context = context;
     }
 

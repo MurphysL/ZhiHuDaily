@@ -45,9 +45,7 @@ public class ResourcesManager {
     }
 
     public ColorStateList getColorByResName(String name){
-        Logger.i("getColorByResName  " + name);
         name = appendSuffix(name);
-        Logger.i("getColorByResNameSuffix  " + name);
         try {
             return resources.getColorStateList(resources.getIdentifier(name , "color" , pkgName));
         }catch (Exception e){

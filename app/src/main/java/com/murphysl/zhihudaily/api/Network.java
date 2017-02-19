@@ -37,7 +37,7 @@ public class Network {
         return commonApi == null ? configRetrofit(CommonApi.class) : commonApi;
     }
 
-    private OkHttpClient configClient(){
+    public OkHttpClient configClient(){
         OkHttpClient.Builder okhttpClient = new OkHttpClient.Builder()
                 .connectTimeout(DEFAULT_TIMEOUT , TimeUnit.SECONDS);
         return okhttpClient.build();
@@ -52,5 +52,6 @@ public class Network {
                 .build();
         return retrofit.create(service);
     }
+
 
 }

@@ -71,6 +71,8 @@ public class SkinManager {
 
         spUtils.saveSuffix(suffix);
         notifyChangeListener();
+
+
     }
 
     private void notifyChangeListener() {

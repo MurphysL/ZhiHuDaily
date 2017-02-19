@@ -11,6 +11,7 @@ package com.murphysl.zhihudaily.config;
 public class Constants {
 
     public static final String BASE_URL = "http://news-at.zhihu.com/api/4/";
+    public static final String BASE_CSS_URL = "http://news-at.zhihu.com/css/";
     public static final String NEWS_ID = "NEWS_ID";
     public static final String NEWS_ID_COMMENTS = "Comments";
     public static final String IMG_URL = "img_url";

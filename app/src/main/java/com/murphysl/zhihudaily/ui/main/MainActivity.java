@@ -36,6 +36,7 @@ import java.util.List;
 public class MainActivity extends BaseMVPActivity<MainModel , MainPresenter> implements MainContract.View{
 
     private Toolbar toolbar;
+    private MenuItem switchModel;
     private DrawerLayout drawer;
     private RecyclerView recyclerView;
     private RelativeLayout head;
@@ -44,6 +45,8 @@ public class MainActivity extends BaseMVPActivity<MainModel , MainPresenter> imp
     private List<ThemesBean.OthersBean> bean = new ArrayList<>();
 
     private SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils(this);
+
+    private String skinModel;
 
     @Override
     protected void initView() {
@@ -112,21 +115,26 @@ public class MainActivity extends BaseMVPActivity<MainModel , MainPresenter> imp
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu , menu);
+
+        switchModel = toolbar.getMenu().findItem(R.id.switch_model);
+        skinModel = sharedPreferencesUtils.getSuffix();
+        if(skinModel.equals(Constants.SKIN_SUFFIX))
+            switchModel.setTitle("日间模式");
+        else
+            switchModel.setTitle("夜间模式");
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        final MenuItem switchModel = toolbar.getMenu().findItem(R.id.switch_model);
-        final String model = sharedPreferencesUtils.getSuffix();
-        Logger.i("model" + model);
+        skinModel = sharedPreferencesUtils.getSuffix();
         switch (item.getItemId()){
             case R.id.switch_model:
-                if(model.equals(Constants.SKIN_SUFFIX)){
-                    switchModel.setTitle("日间模式");
+                if(skinModel.equals(Constants.SKIN_SUFFIX)){
+                    switchModel.setTitle("夜间模式");
                     SkinManager.getInstance().changeSkin("");
                 }else{
-                    switchModel.setTitle("夜间模式");
+                    switchModel.setTitle("日间模式");
                     SkinManager.getInstance().changeSkin(Constants.SKIN_SUFFIX);
                 }
                 break;

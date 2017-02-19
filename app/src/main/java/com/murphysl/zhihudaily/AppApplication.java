@@ -3,6 +3,7 @@ package com.murphysl.zhihudaily;
 import android.app.Application;
 
 import com.murphysl.zhihudaily.ui.skin.SkinManager;
+import com.murphysl.zhihudaily.util.SharedPreferencesUtils;
 import com.orhanobut.logger.Logger;
 
 /**

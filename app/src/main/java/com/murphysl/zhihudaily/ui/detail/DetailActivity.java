@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
-import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,7 +15,8 @@ import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.bean.DetailNews;
 import com.murphysl.zhihudaily.mvpframe.base.BaseMVPActivity;
 import com.murphysl.zhihudaily.ui.comment.CommentActivity;
-import com.murphysl.zhihudaily.util.HtmlUtils;
+import com.murphysl.zhihudaily.util.HtmlManager;
+import com.murphysl.zhihudaily.util.SharedPreferencesUtils;
 import com.orhanobut.logger.Logger;
 import com.squareup.picasso.Picasso;
 
@@ -28,7 +27,6 @@ import com.squareup.picasso.Picasso;
  * js
  * 标题缩写
  * 赞与评论数
- * 模式切换html字体颜色---正则
  * 共享元素失效
  *
  * @author: MurphySL
@@ -36,7 +34,7 @@ import com.squareup.picasso.Picasso;
  */
 
 
-public class DetailActivity extends BaseMVPActivity<DetailModel, DetailPresenter> implements DetailContract.View {
+public class DetailActivity extends BaseMVPActivity<DetailModel, DetailPresenter> implements DetailContract.View{
 
     private Toolbar toolbar;
     private WebView webview;
@@ -45,7 +43,6 @@ public class DetailActivity extends BaseMVPActivity<DetailModel, DetailPresenter
     private CollapsingToolbarLayout collapsingToolbarLayout;
 
     private int newsId = -1;
-    private String imgUrl ;
 
     @Override
     protected void initView() {
@@ -58,6 +55,11 @@ public class DetailActivity extends BaseMVPActivity<DetailModel, DetailPresenter
         collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.colorWhite));
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.colorWhite));
 
+        SharedPreferencesUtils sp = new SharedPreferencesUtils(this);
+        String skinModel = sp.getSuffix();
+        if(skinModel.equals(Constants.SKIN_SUFFIX)){
+            collapsingToolbarLayout.setContentScrim(getDrawable(R.color.colorPrimaryDark));
+        }
     }
 
     @Override
@@ -77,7 +79,7 @@ public class DetailActivity extends BaseMVPActivity<DetailModel, DetailPresenter
                 intent.putExtra(Constants.NEWS_ID_COMMENTS, newsId);
                 startActivity(intent);
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     @Override
@@ -119,9 +121,22 @@ public class DetailActivity extends BaseMVPActivity<DetailModel, DetailPresenter
 
         sourceDetail.setText(detailBean.getImage_source());
 
-        String data = HtmlUtils.createHtmlData(detailBean.getBody() , detailBean.getCss());
-        Logger.i("showDetailNews: " + data);
-        webview.loadDataWithBaseURL(null ,data , HtmlUtils.MIME_TYPE, HtmlUtils.ENCODING,null);
+        Logger.i(detailBean.getCss().get(0));
+
+        HtmlManager utils = new HtmlManager(this);
+        utils.setOnDataChangeListener(detailBean.getBody() , detailBean.getCss().get(0) , new HtmlManager.HtmlDataChangeListener() {
+            @Override
+            public void changed(final String data) {
+                Logger.i("showDetailNews: " + data);
+                webview.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        webview.loadDataWithBaseURL(null ,data , HtmlManager.MIME_TYPE, HtmlManager.ENCODING,null);
+                    }
+                });
+
+            }
+        });
 
     }
 

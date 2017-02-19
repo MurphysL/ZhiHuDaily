@@ -5,6 +5,7 @@ import com.murphysl.zhihudaily.bean.DetailNews;
 import com.murphysl.zhihudaily.mvpframe.rx.RxSchedulerHelper;
 
 import io.reactivex.Observable;
+import okhttp3.Response;
 
 /**
  * DetailModel
@@ -20,4 +21,5 @@ public class DetailModel implements DetailContract.Model {
         return Network.getInstance().getCommonApi().getDetailNews(id)
                 .compose(RxSchedulerHelper.<DetailNews>io_main());
     }
+
 }
