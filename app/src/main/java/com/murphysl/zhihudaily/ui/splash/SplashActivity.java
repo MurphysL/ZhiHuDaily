@@ -25,8 +25,8 @@ import io.reactivex.disposables.Disposable;
 /**
  * SplashActivity
  *
- * @author: MurphySL
- * @time: 2017/1/19 12:41
+ * author: MurphySL
+ * time: 2017/1/19 12:41
  */
 
 
@@ -63,7 +63,7 @@ public class SplashActivity extends BaseMVPActivity<SplashModel, SplashPresenter
             return;
         Logger.i("SplashImgBean" + imgBean.toString());
 
-        Observable.timer(2 , TimeUnit.SECONDS)
+        Observable.timer(500 ,TimeUnit.MILLISECONDS)
                 .compose(RxSchedulerHelper.<Long>io_main())
                 .subscribe(new Observer<Long>() {
                     @Override
@@ -74,10 +74,11 @@ public class SplashActivity extends BaseMVPActivity<SplashModel, SplashPresenter
                     @Override
                     public void onNext(Long value) {
                         Picasso.with(SplashActivity.this)
-                                .load(imgBean.getImg())
+                                .load(imgBean.getCreatives().get(0).getUrl())
                                 .fit()
                                 .into(img);
-                        text.setText(imgBean.getText());
+
+                        text.setText("");
                     }
 
                     @Override
@@ -121,7 +122,7 @@ public class SplashActivity extends BaseMVPActivity<SplashModel, SplashPresenter
 
     @Override
     public void onRequestError(String msg) {
-        Logger.i("onRequestError: " + msg.toString());
+        Logger.i("onRequestError: " + msg);
 
         startNextActivity();
     }

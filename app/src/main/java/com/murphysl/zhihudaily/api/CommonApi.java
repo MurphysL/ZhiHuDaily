@@ -20,32 +20,29 @@ import retrofit2.http.Path;
  * @time: 2017/1/19 12:48
  */
 
-
 public interface CommonApi {
 
-    @GET("start-image/1080*1776")
+    @GET("7/prefetch-launch-images/1080*1776")
     Observable<SplashImgBean> getSplashImg();
 
-    @GET("news/latest")
+    @GET("4/news/latest")
     Observable<LatestNewsBean> getLatestNews();
 
-    @GET("news/before/{date}")
+    @GET("4/news/before/{date}")
     Observable<BeforeNewsBean> getBeforeNews(@Path("date") String date);
 
-    @GET("news/{id}")
+    @GET("4/news/{id}")
     Observable<DetailNews> getDetailNews(@Path("id") int id);
 
-    @GET("themes")
+    @GET("4/themes")
     Observable<ThemesBean> getThemesBean();
 
-    @GET("theme/{theme}")
+    @GET("4/theme/{theme}")
     Observable<ThemeNewsBean> getThemeNewsBean(@Path("theme") int theme);
 
-    @GET("story/{id}/long-comments")
+    @GET("4/story/{id}/long-comments")
     Observable<LongCommentsBean> getLongCommentsBean(@Path("id") int id);
 
-    @GET("story/{id}/short-comments")
+    @GET("4/story/{id}/short-comments")
     Observable<ShortCommentsBean> getShortCommentsBean(@Path("id") int id);
-
-
 }
