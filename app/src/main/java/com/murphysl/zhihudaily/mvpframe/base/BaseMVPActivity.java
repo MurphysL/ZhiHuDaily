@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.murphysl.zhihudaily.base.BaseActivity;
-import com.murphysl.zhihudaily.mvpframe.util.TUtil;
+import com.murphysl.zhihudaily.util.TUtil;
 
 /**
  * BaseMVPActivity

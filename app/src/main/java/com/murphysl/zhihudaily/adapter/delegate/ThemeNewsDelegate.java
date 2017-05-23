@@ -12,8 +12,8 @@ import com.murphysl.zhihudaily.R;
 import com.murphysl.zhihudaily.adapter.base.BaseViewHolder;
 import com.murphysl.zhihudaily.adapter.base.ItemViewDelegate;
 import com.murphysl.zhihudaily.bean.NewsBean;
-import com.murphysl.zhihudaily.bean.StoriesBean;
-import com.murphysl.zhihudaily.ui.detail.DetailActivity;
+import com.murphysl.zhihudaily.data.StoriesBean;
+import com.murphysl.zhihudaily.function.detail.DetailActivity;
 import com.orhanobut.logger.Logger;
 
 /**

@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.murphysl.zhihudaily.base.BaseFragment;
-import com.murphysl.zhihudaily.mvpframe.util.TUtil;
+import com.murphysl.zhihudaily.util.TUtil;
 
 /**
  * BaseMVPFragment

@@ -1,8 +1,8 @@
 package com.murphysl.zhihudaily.api;
 
-import com.murphysl.zhihudaily.bean.BeforeNewsBean;
+import com.murphysl.zhihudaily.data.BeforeNewsBean;
 import com.murphysl.zhihudaily.bean.DetailNews;
-import com.murphysl.zhihudaily.bean.LatestNewsBean;
+import com.murphysl.zhihudaily.data.LatestNewsBean;
 import com.murphysl.zhihudaily.bean.LongCommentsBean;
 import com.murphysl.zhihudaily.bean.ShortCommentsBean;
 import com.murphysl.zhihudaily.bean.SplashImgBean;

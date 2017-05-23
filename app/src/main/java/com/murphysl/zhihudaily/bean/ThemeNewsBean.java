@@ -1,5 +1,7 @@
 package com.murphysl.zhihudaily.bean;
 
+import com.murphysl.zhihudaily.data.StoriesBean;
+
 import java.util.List;
 
 /**
