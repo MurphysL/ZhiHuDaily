@@ -1,7 +1,7 @@
 package com.murphysl.zhihudaily.function.comment;
 
-import com.murphysl.zhihudaily.bean.LongCommentsBean;
-import com.murphysl.zhihudaily.bean.ShortCommentsBean;
+import com.murphysl.zhihudaily.data.bean.LongCommentsBean;
+import com.murphysl.zhihudaily.data.bean.ShortCommentsBean;
 
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;

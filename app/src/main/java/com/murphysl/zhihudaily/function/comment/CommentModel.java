@@ -1,9 +1,9 @@
 package com.murphysl.zhihudaily.function.comment;
 
-import com.murphysl.zhihudaily.api.Network;
-import com.murphysl.zhihudaily.bean.LongCommentsBean;
-import com.murphysl.zhihudaily.bean.ShortCommentsBean;
-import com.murphysl.zhihudaily.mvpframe.rx.RxSchedulerHelper;
+import com.murphysl.zhihudaily.data.api.Network;
+import com.murphysl.zhihudaily.data.bean.LongCommentsBean;
+import com.murphysl.zhihudaily.data.bean.ShortCommentsBean;
+import com.murphysl.zhihudaily.util.rx.RxSchedulerHelper;
 
 import io.reactivex.Observable;
 

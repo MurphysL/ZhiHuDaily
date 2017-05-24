@@ -1,8 +1,8 @@
 package com.murphysl.zhihudaily.function.splash;
 
-import com.murphysl.zhihudaily.api.Network;
-import com.murphysl.zhihudaily.bean.SplashImgBean;
-import com.murphysl.zhihudaily.mvpframe.rx.RxSchedulerHelper;
+import com.murphysl.zhihudaily.data.api.Network;
+import com.murphysl.zhihudaily.data.bean.SplashImgBean;
+import com.murphysl.zhihudaily.util.rx.RxSchedulerHelper;
 
 import io.reactivex.Observable;
 

@@ -1,9 +1,9 @@
 package com.murphysl.zhihudaily.function.home;
 
-import com.murphysl.zhihudaily.api.Network;
-import com.murphysl.zhihudaily.data.BeforeNewsBean;
-import com.murphysl.zhihudaily.data.LatestNewsBean;
-import com.murphysl.zhihudaily.mvpframe.rx.RxSchedulerHelper;
+import com.murphysl.zhihudaily.data.api.Network;
+import com.murphysl.zhihudaily.data.news.BeforeNewsBean;
+import com.murphysl.zhihudaily.data.news.LatestNewsBean;
+import com.murphysl.zhihudaily.util.rx.RxSchedulerHelper;
 
 import io.reactivex.Observable;
 

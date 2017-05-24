@@ -1,7 +1,7 @@
 package com.murphysl.zhihudaily.function.home;
 
-import com.murphysl.zhihudaily.data.BeforeNewsBean;
-import com.murphysl.zhihudaily.data.LatestNewsBean;
+import com.murphysl.zhihudaily.data.news.BeforeNewsBean;
+import com.murphysl.zhihudaily.data.news.LatestNewsBean;
 
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;

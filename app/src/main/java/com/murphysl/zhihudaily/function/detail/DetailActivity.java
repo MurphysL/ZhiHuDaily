@@ -10,11 +10,11 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.murphysl.zhihudaily.config.Constants;
+import com.murphysl.zhihudaily.util.config.Constants;
 import com.murphysl.zhihudaily.R;
-import com.murphysl.zhihudaily.bean.DetailNews;
+import com.murphysl.zhihudaily.data.bean.DetailNews;
 import com.murphysl.zhihudaily.function.comment.CommentActivity;
-import com.murphysl.zhihudaily.mvpframe.base.BaseMVPActivity;
+import com.murphysl.zhihudaily.base.mvp.BaseMVPActivity;
 import com.murphysl.zhihudaily.util.HtmlManager;
 import com.murphysl.zhihudaily.util.SharedPreferencesUtils;
 import com.orhanobut.logger.Logger;

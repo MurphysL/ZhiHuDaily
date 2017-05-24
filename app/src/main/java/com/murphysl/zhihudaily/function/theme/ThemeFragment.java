@@ -10,13 +10,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.murphysl.zhihudaily.R;
-import com.murphysl.zhihudaily.adapter.base.MultiItemTypeAdapter;
-import com.murphysl.zhihudaily.adapter.delegate.EditorsDelegate;
-import com.murphysl.zhihudaily.adapter.delegate.ThemeNewsDelegate;
-import com.murphysl.zhihudaily.adapter.wrapper.HeaderAndFooterWrapper;
-import com.murphysl.zhihudaily.bean.NewsBean;
-import com.murphysl.zhihudaily.bean.ThemeNewsBean;
-import com.murphysl.zhihudaily.mvpframe.base.BaseMVPFragment;
+import com.murphysl.zhihudaily.ui.adapter.base.MultiItemTypeAdapter;
+import com.murphysl.zhihudaily.ui.adapter.delegate.EditorsDelegate;
+import com.murphysl.zhihudaily.ui.adapter.delegate.ThemeNewsDelegate;
+import com.murphysl.zhihudaily.ui.adapter.wrapper.HeaderAndFooterWrapper;
+import com.murphysl.zhihudaily.data.NewsBean;
+import com.murphysl.zhihudaily.data.bean.ThemeNewsBean;
+import com.murphysl.zhihudaily.base.mvp.BaseMVPFragment;
 import com.murphysl.zhihudaily.ui.widget.Banner;
 import com.orhanobut.logger.Logger;
 

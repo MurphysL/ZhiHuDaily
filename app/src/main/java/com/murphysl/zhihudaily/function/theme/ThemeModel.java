@@ -1,8 +1,8 @@
 package com.murphysl.zhihudaily.function.theme;
 
-import com.murphysl.zhihudaily.api.Network;
-import com.murphysl.zhihudaily.bean.ThemeNewsBean;
-import com.murphysl.zhihudaily.mvpframe.rx.RxSchedulerHelper;
+import com.murphysl.zhihudaily.data.api.Network;
+import com.murphysl.zhihudaily.data.bean.ThemeNewsBean;
+import com.murphysl.zhihudaily.util.rx.RxSchedulerHelper;
 
 import io.reactivex.Observable;
 

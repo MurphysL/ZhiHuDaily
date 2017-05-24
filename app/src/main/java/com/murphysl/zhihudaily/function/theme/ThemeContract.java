@@ -1,9 +1,9 @@
 package com.murphysl.zhihudaily.function.theme;
 
-import com.murphysl.zhihudaily.bean.ThemeNewsBean;
-import com.murphysl.zhihudaily.mvpframe.base.BaseModel;
-import com.murphysl.zhihudaily.mvpframe.base.BasePresenter;
-import com.murphysl.zhihudaily.mvpframe.base.BaseView;
+import com.murphysl.zhihudaily.data.bean.ThemeNewsBean;
+import com.murphysl.zhihudaily.base.mvp.BaseModel;
+import com.murphysl.zhihudaily.base.mvp.BasePresenter;
+import com.murphysl.zhihudaily.base.mvp.BaseView;
 
 import io.reactivex.Observable;
 

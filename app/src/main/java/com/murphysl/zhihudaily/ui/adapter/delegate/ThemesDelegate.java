@@ -1,0 +1,34 @@
+package com.murphysl.zhihudaily.ui.adapter.delegate;
+
+import android.support.annotation.NonNull;
+
+import com.murphysl.zhihudaily.R;
+import com.murphysl.zhihudaily.ui.adapter.base.BaseViewHolder;
+import com.murphysl.zhihudaily.ui.adapter.base.ItemViewDelegate;
+import com.murphysl.zhihudaily.data.bean.ThemesBean;
+
+/**
+ * ThemesDelegate
+ *
+ * @author: MurphySL
+ * @time: 2017/1/29 16:08
+ */
+
+
+public class ThemesDelegate implements ItemViewDelegate<ThemesBean.OthersBean> {
+
+    @Override
+    public int getItemViewLayoutId() {
+        return R.layout.drawer_menu_item;
+    }
+
+    @Override
+    public boolean isForViewType(@NonNull ThemesBean.OthersBean data) {
+        return data instanceof ThemesBean.OthersBean;
+    }
+
+    @Override
+    public void convert(BaseViewHolder viewHolder, ThemesBean.OthersBean othersBean, int position) {
+        viewHolder.setText(R.id.title_drawer , othersBean.getName());
+    }
+}

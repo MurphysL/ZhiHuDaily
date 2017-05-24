@@ -1,6 +1,6 @@
 package com.murphysl.zhihudaily.function.theme;
 
-import com.murphysl.zhihudaily.bean.ThemeNewsBean;
+import com.murphysl.zhihudaily.data.bean.ThemeNewsBean;
 
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;

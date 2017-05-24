@@ -191,7 +191,7 @@ class Banner : RelativeLayout {
         var num : Int = imgs.size -2
 
         for(i : Int in 0..num-1){
-            var imageView : ImageView = ImageView(context)
+            val imageView : ImageView = ImageView(context)
             imageView.scaleType = ImageView.ScaleType.CENTER_INSIDE
             imageView.setPadding(5,5,5,5)
             if(i == 0)

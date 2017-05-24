@@ -8,13 +8,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.murphysl.zhihudaily.R;
-import com.murphysl.zhihudaily.adapter.base.MultiItemTypeAdapter;
-import com.murphysl.zhihudaily.adapter.delegate.CommentsDelegate;
-import com.murphysl.zhihudaily.bean.CommentsBean;
-import com.murphysl.zhihudaily.bean.LongCommentsBean;
-import com.murphysl.zhihudaily.bean.ShortCommentsBean;
-import com.murphysl.zhihudaily.config.Constants;
-import com.murphysl.zhihudaily.mvpframe.base.BaseMVPActivity;
+import com.murphysl.zhihudaily.ui.adapter.base.MultiItemTypeAdapter;
+import com.murphysl.zhihudaily.ui.adapter.delegate.CommentsDelegate;
+import com.murphysl.zhihudaily.data.bean.CommentsBean;
+import com.murphysl.zhihudaily.data.bean.LongCommentsBean;
+import com.murphysl.zhihudaily.data.bean.ShortCommentsBean;
+import com.murphysl.zhihudaily.util.config.Constants;
+import com.murphysl.zhihudaily.base.mvp.BaseMVPActivity;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;

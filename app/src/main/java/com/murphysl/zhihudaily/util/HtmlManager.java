@@ -3,22 +3,14 @@ package com.murphysl.zhihudaily.util;
 
 import android.content.Context;
 
-import com.murphysl.zhihudaily.api.Network;
-import com.murphysl.zhihudaily.config.Constants;
+import com.murphysl.zhihudaily.data.api.Network;
+import com.murphysl.zhihudaily.util.config.Constants;
 import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import io.reactivex.BackpressureStrategy;
-import io.reactivex.Flowable;
-import io.reactivex.FlowableEmitter;
-import io.reactivex.FlowableOnSubscribe;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Request;

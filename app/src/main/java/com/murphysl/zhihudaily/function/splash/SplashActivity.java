@@ -7,9 +7,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.murphysl.zhihudaily.R;
-import com.murphysl.zhihudaily.bean.SplashImgBean;
-import com.murphysl.zhihudaily.mvpframe.base.BaseMVPActivity;
-import com.murphysl.zhihudaily.mvpframe.rx.RxSchedulerHelper;
+import com.murphysl.zhihudaily.data.bean.SplashImgBean;
+import com.murphysl.zhihudaily.base.mvp.BaseMVPActivity;
+import com.murphysl.zhihudaily.util.rx.RxSchedulerHelper;
 import com.murphysl.zhihudaily.function.main.MainActivity;
 import com.orhanobut.logger.Logger;
 import com.squareup.picasso.Picasso;
