@@ -3,7 +3,7 @@ package com.murphysl.zhihudaily.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.murphysl.zhihudaily.config.Constants;
+import com.murphysl.zhihudaily.util.config.Constants;
 
 /**
  * SharedPreferencesUtils

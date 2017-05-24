@@ -3,7 +3,7 @@ package com.murphysl.zhihudaily.ui.skin;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.murphysl.zhihudaily.config.Constants;
+import com.murphysl.zhihudaily.util.config.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
